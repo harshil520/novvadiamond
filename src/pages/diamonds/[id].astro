@@ -1,0 +1,221 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getDiamondWhatsAppLink, getDiamondWhatsAppMessage } from "../../data/config";
+import type { Diamond } from "../../data/config";
+import diamondsData from "../../data/diamonds.json";
+
+export function getStaticPaths() {
+  const diamonds = diamondsData as Diamond[];
+  return diamonds.map((diamond) => ({
+    params: { id: diamond.id },
+    props: { diamond },
+  }));
+}
+
+interface Props {
+  diamond: Diamond;
+}
+
+const { diamond } = Astro.props;
+const whatsappLink = getDiamondWhatsAppLink(diamond);
+const allDiamonds = diamondsData as Diamond[];
+const similarDiamonds = allDiamonds
+  .filter((d) => d.id !== diamond.id && d.shape === diamond.shape)
+  .slice(0, 3);
+
+const specs = [
+  { label: "Shape", value: diamond.shape },
+  { label: "Carat Weight", value: `${diamond.carat}ct` },
+  { label: "Cut Grade", value: diamond.cut },
+  { label: "Color Grade", value: diamond.color },
+  { label: "Clarity Grade", value: diamond.clarity },
+  { label: "Dimensions", value: diamond.mmSize },
+  { label: "Certification", value: diamond.certification },
+  { label: "Origin", value: diamond.origin },
+];
+---
+
+<Layout
+  title={`${diamond.carat}ct ${diamond.shape} Diamond — ${diamond.certification} | Novva Diamonds`}
+  description={`${diamond.carat} carat ${diamond.shape} diamond, ${diamond.cut} cut, ${diamond.color} color, ${diamond.clarity} clarity. ${diamond.certification} certified. ${diamond.origin} origin. Get today's best price on WhatsApp.`}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-surface border-b border-muted" aria-label="Breadcrumb">
+    <div class="container-luxe py-4">
+      <ol class="flex items-center gap-2 text-caption text-text-light">
+        <li><a href="/" class="hover:text-accent transition-colors">Home</a></li>
+        <li><span class="mx-1">/</span></li>
+        <li><a href="/diamonds/" class="hover:text-accent transition-colors">Diamonds</a></li>
+        <li><span class="mx-1">/</span></li>
+        <li class="text-on-surface font-semibold">{diamond.carat}ct {diamond.shape}</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Diamond Detail -->
+  <section class="section-padding bg-surface-warm">
+    <div class="container-luxe">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+
+        <!-- Left: Gallery -->
+        <div class="reveal">
+          <!-- Main Image -->
+          <div class="aspect-square bg-surface border border-muted rounded-md flex items-center justify-center mb-4 overflow-hidden relative">
+            <img
+              id="main-diamond-image"
+              src={`/shape_Images/${diamond.shape.toLowerCase()}.jpeg`}
+              alt={`${diamond.carat}ct ${diamond.shape} Diamond`}
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute bottom-3 right-3 bg-primary/80 backdrop-blur-sm text-white text-[10px] uppercase tracking-wider px-2 py-1 font-bold">
+              Illustration
+            </div>
+          </div>
+
+          <!-- Thumbnail strip -->
+          <div class="grid grid-cols-4 gap-3">
+            <div class="aspect-square bg-surface border border-accent rounded-sm overflow-hidden p-1 cursor-pointer">
+              <img src={`/shape_Images/${diamond.shape.toLowerCase()}.jpeg`} class="w-full h-full object-cover" alt="Main View" />
+            </div>
+            
+            <div class="aspect-square bg-surface border border-muted rounded-sm flex flex-col items-center justify-center text-center p-1 cursor-default">
+              <span class="text-[8px] font-bold uppercase tracking-wider text-primary/60">GIA/IGI</span>
+              <span class="text-[9px] text-text-light">Cert Doc</span>
+            </div>
+            <div class="aspect-square bg-surface border border-muted rounded-sm flex flex-col items-center justify-center text-center p-1 cursor-default">
+              <span class="text-[8px] font-bold uppercase tracking-wider text-primary/60">360°</span>
+              <span class="text-[9px] text-text-light">Video</span>
+            </div>
+            <a 
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer" 
+              class="aspect-square bg-surface border border-muted rounded-sm flex flex-col items-center justify-center text-center p-1 hover:border-accent transition-colors"
+            >
+              <span class="text-[8px] font-bold uppercase tracking-wider text-accent">Request</span>
+              <span class="text-[9px] text-text-light">Real Photo</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Details -->
+        <div class="reveal stagger-2">
+          <!-- Badges -->
+          <div class="flex items-center gap-3 mb-4">
+            <span class="badge">{diamond.certification} Certified</span>
+            <span class={`badge ${diamond.origin === "Lab-Grown" ? "badge-green" : "badge-accent"}`}>
+              {diamond.origin}
+            </span>
+          </div>
+
+          <!-- Title -->
+          <h1 class="text-headline-lg mb-2" style="font-size: clamp(28px, 3.5vw, 40px);">
+            {diamond.carat}ct {diamond.shape} Diamond
+          </h1>
+
+          <hr class="divider-gold mb-8" />
+
+          <!-- Key Specs Row -->
+          <div class="grid grid-cols-4 gap-4 mb-8">
+            <div class="text-center">
+              <span class="text-overline text-text-light block mb-1">Cut</span>
+              <span class="text-body-md font-semibold text-on-surface">{diamond.cut}</span>
+            </div>
+            <div class="text-center">
+              <span class="text-overline text-text-light block mb-1">Color</span>
+              <span class="text-body-md font-semibold text-on-surface">{diamond.color}</span>
+            </div>
+            <div class="text-center">
+              <span class="text-overline text-text-light block mb-1">Clarity</span>
+              <span class="text-body-md font-semibold text-on-surface">{diamond.clarity}</span>
+            </div>
+            <div class="text-center">
+              <span class="text-overline text-text-light block mb-1">Carat</span>
+              <span class="text-body-md font-semibold text-on-surface">{diamond.carat}</span>
+            </div>
+          </div>
+
+          <!-- Full Specs Table -->
+          <div class="bg-surface border border-muted rounded-md overflow-hidden mb-8">
+            <div class="px-5 py-3 bg-surface-marble border-b border-muted">
+              <h2 class="text-label-md text-on-surface">Diamond Specifications</h2>
+            </div>
+            <div class="divide-y divide-muted">
+              {specs.map((spec) => (
+                <div class="flex items-center justify-between px-5 py-3">
+                  <span class="text-body-sm text-text-light">{spec.label}</span>
+                  <span class="text-body-sm font-semibold text-on-surface">{spec.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- WhatsApp CTA -->
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-whatsapp w-full !text-[13px]"
+            id="diamond-detail-whatsapp-cta"
+          >
+            <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Get Today's Best Price
+          </a>
+
+          <p class="text-caption text-text-light text-center mt-3">
+            Click to chat on WhatsApp with diamond details pre-filled
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Similar Diamonds -->
+  {similarDiamonds.length > 0 && (
+    <section class="section-padding bg-surface">
+      <div class="container-luxe">
+        <div class="text-center mb-12 reveal">
+          <span class="overline block mb-3">You May Also Like</span>
+          <h2 class="text-headline-md">Similar Diamonds</h2>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto">
+          {similarDiamonds.map((d, i) => (
+            <article class={`card group reveal stagger-${i + 1}`}>
+              <a href={`/diamonds/${d.id}/`} class="block img-zoom mb-4 aspect-square bg-surface-marble rounded-sm overflow-hidden border border-muted hover:border-accent/30 transition-colors duration-300">
+                <div class="w-full h-full flex items-center justify-center bg-white">
+                  <img
+                    src={`/shape_Images/${d.shape.toLowerCase()}.jpeg`}
+                    alt={`${d.carat}ct ${d.shape} Diamond`}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+              </a>
+              <div class="px-1">
+                <a href={`/diamonds/${d.id}/`}>
+                  <h3 class="text-body-md font-semibold text-on-surface mb-1">{d.carat}ct {d.shape}</h3>
+                </a>
+                <div class="flex items-center gap-2 mb-3 text-[11px] font-bold tracking-wider uppercase text-primary/70 dark:text-white/70">
+                  <span>{d.cut}</span>
+                  <span class="text-muted-dark">·</span>
+                  <span>{d.color}</span>
+                  <span class="text-muted-dark">·</span>
+                  <span>{d.clarity}</span>
+                </div>
+                <a
+                  href={`/diamonds/${d.id}/`}
+                  class="btn btn-secondary !h-9 !min-w-0 w-full !px-3 !text-[10px] justify-center"
+                >
+                  View Details
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</Layout>

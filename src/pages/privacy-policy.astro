@@ -1,0 +1,107 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { siteConfig } from "../data/config";
+---
+
+<Layout
+  title="Privacy Policy | Novva Diamonds"
+  description="Read the privacy policy for Novva Diamonds. Learn how we handle your personal information and protect your privacy."
+>
+  <nav class="bg-surface border-b border-muted" aria-label="Breadcrumb">
+    <div class="container-luxe py-4">
+      <ol class="flex items-center gap-2 text-caption text-text-light">
+        <li><a href="/" class="hover:text-accent transition-colors">Home</a></li>
+        <li><span class="mx-1">/</span></li>
+        <li class="text-on-surface font-semibold">Privacy Policy</li>
+      </ol>
+    </div>
+  </nav>
+
+  <article class="section-padding bg-surface-warm">
+    <div class="container-narrow rich-text">
+      <div class="text-center mb-16">
+        <h1 class="text-headline-lg mb-4" style="font-size: clamp(28px, 4vw, 40px);">Privacy Policy</h1>
+        <hr class="divider-gold mx-auto mb-4" />
+        <p class="text-caption text-text-light">Last updated: June 2025</p>
+      </div>
+
+      <section class="mb-10">
+        <h2>Introduction</h2>
+        <p>
+          {siteConfig.name} ("we," "our," or "us") respects your privacy and is committed to protecting your personal information.
+          This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website.
+        </p>
+      </section>
+
+      <section class="mb-10">
+        <h2>Information We Collect</h2>
+        <p>We may collect the following types of information:</p>
+        <ul>
+          <li><strong>Information you provide:</strong> When you contact us via WhatsApp or email, you may share your name, contact details, and diamond preferences.</li>
+          <li><strong>Automatically collected information:</strong> We may collect your IP address, browser type, device information, and browsing behavior through cookies and similar technologies.</li>
+          <li><strong>Currency preference:</strong> We store your currency selection locally on your device to improve your browsing experience.</li>
+        </ul>
+      </section>
+
+      <section class="mb-10">
+        <h2>How We Use Your Information</h2>
+        <ul>
+          <li>To respond to your diamond inquiries and provide personalized recommendations</li>
+          <li>To improve our website and user experience</li>
+          <li>To analyze website traffic and usage patterns</li>
+          <li>To comply with applicable laws and regulations</li>
+        </ul>
+      </section>
+
+      <section class="mb-10">
+        <h2>Information Sharing</h2>
+        <p>
+          We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:
+        </p>
+        <ul>
+          <li>With your explicit consent</li>
+          <li>To comply with legal obligations</li>
+          <li>To protect our rights and safety</li>
+          <li>With service providers who assist in operating our website (under strict confidentiality agreements)</li>
+        </ul>
+      </section>
+
+      <section class="mb-10">
+        <h2>Cookies</h2>
+        <p>
+          Our website uses cookies and local storage to remember your preferences (such as currency selection)
+          and to analyze site traffic. You can control cookie settings through your browser preferences.
+        </p>
+      </section>
+
+      <section class="mb-10">
+        <h2>Data Security</h2>
+        <p>
+          We implement appropriate technical and organizational measures to protect your personal information
+          against unauthorized access, alteration, disclosure, or destruction.
+        </p>
+      </section>
+
+      <section class="mb-10">
+        <h2>Your Rights (GDPR)</h2>
+        <p>If you are located in the European Economic Area, you have the right to:</p>
+        <ul>
+          <li>Access your personal data</li>
+          <li>Correct inaccurate data</li>
+          <li>Request deletion of your data</li>
+          <li>Object to processing of your data</li>
+          <li>Data portability</li>
+        </ul>
+        <p>To exercise these rights, please contact us at <a href={`mailto:${siteConfig.email}`} class="text-accent hover:underline">{siteConfig.email}</a>.</p>
+      </section>
+
+      <section class="mb-10">
+        <h2>Contact Us</h2>
+        <p>
+          If you have any questions about this Privacy Policy, please contact us at
+          <a href={`mailto:${siteConfig.email}`} class="text-accent hover:underline">{siteConfig.email}</a>.
+        </p>
+      </section>
+    </div>
+  </article>
+</Layout>

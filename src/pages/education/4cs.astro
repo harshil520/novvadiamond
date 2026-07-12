@@ -1,0 +1,224 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { siteConfig, getWhatsAppLink } from "../../data/config";
+
+const colorLabels: Record<string, string> = {
+  D: "Colorless",
+  E: "Near Colorless",
+  F: "Near Colorless",
+  G: "Faint",
+  H: "Faint",
+  I: "Faint",
+  J: "Faint",
+};
+---
+
+<Layout
+  title="The 4Cs of Diamonds — Cut, Color, Clarity, Carat | Novva Diamonds"
+  description="Learn about the 4Cs that determine a diamond's quality and value: Cut, Color, Clarity, and Carat weight. A comprehensive guide by Novva Diamonds."
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-surface border-b border-muted" aria-label="Breadcrumb">
+    <div class="container-luxe py-4">
+      <ol class="flex items-center gap-2 text-caption text-text-light">
+        <li><a href="/" class="hover:text-accent transition-colors">Home</a></li>
+        <li><span class="mx-1">/</span></li>
+        <li><a href="/education/" class="hover:text-accent transition-colors">Education</a></li>
+        <li><span class="mx-1">/</span></li>
+        <li class="text-on-surface font-semibold">The 4Cs</li>
+      </ol>
+    </div>
+  </nav>
+
+  <article class="section-padding bg-surface-warm">
+    <div class="container-narrow rich-text">
+      <div class="text-center mb-16 reveal">
+        <span class="overline block mb-4">Diamond Education</span>
+        <h1 class="text-headline-lg mb-4" style="font-size: clamp(28px, 4vw, 44px);">
+          The 4Cs of Diamonds
+        </h1>
+        <hr class="divider-gold mx-auto mb-6" />
+        <p class="text-body-lg text-text-light max-w-2xl mx-auto">
+          Every diamond is unique. The 4Cs — Cut, Color, Clarity, and Carat — are the universal standard
+          for evaluating diamond quality, developed by GIA in the 1950s.
+        </p>
+      </div>
+
+      <!-- Cut -->
+      <section class="mb-16 reveal" id="cut">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-12 h-12 rounded-md bg-accent/10 flex items-center justify-center flex-shrink-0">
+            <span class="text-2xl font-serif text-accent" style="font-family: var(--font-serif);">C</span>
+          </div>
+          <h2 class="!mt-0 !mb-0">Cut — The Brilliance Factor</h2>
+        </div>
+        <p>
+          Cut is widely considered the most important of the 4Cs because it directly determines how much a diamond sparkles.
+          A well-cut diamond reflects light internally from one facet to another, then disperses it through the top of the stone.
+        </p>
+        <p>
+          Cut doesn't refer to a diamond's shape (Round, Oval, etc.) but rather to how well its facets interact with light.
+        </p>
+
+        <!-- Cut grades visual -->
+        <div class="grid grid-cols-3 gap-4 my-8 not-rich-text">
+          <div class="bg-surface border border-muted rounded-md p-6 text-center">
+            <div class="w-10 h-10 mx-auto mb-3 rounded-full bg-accent/20 flex items-center justify-center">
+              <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+              </svg>
+            </div>
+            <h4 class="text-accent mb-1">Excellent</h4>
+            <p class="text-caption text-text-light">Maximum fire and brilliance. Light reflects out of the top.</p>
+          </div>
+          <div class="bg-surface border border-muted rounded-md p-6 text-center">
+            <div class="w-10 h-10 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+              </svg>
+            </div>
+            <h4 class="text-primary mb-1">Very Good</h4>
+            <p class="text-caption text-text-light">Exceptional brilliance. Slight light leakage.</p>
+          </div>
+          <div class="bg-surface border border-muted rounded-md p-6 text-center">
+            <div class="w-10 h-10 mx-auto mb-3 rounded-full bg-muted flex items-center justify-center">
+              <svg class="w-5 h-5 text-text-light" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+              </svg>
+            </div>
+            <h4 class="text-text-light mb-1">Good</h4>
+            <p class="text-caption text-text-light">Good brilliance. Noticeable light leakage.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Color -->
+      <section class="mb-16 reveal" id="color">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-12 h-12 rounded-md bg-accent/10 flex items-center justify-center flex-shrink-0">
+            <span class="text-2xl font-serif text-accent" style="font-family: var(--font-serif);">C</span>
+          </div>
+          <h2 class="!mt-0 !mb-0">Color — Less is More</h2>
+        </div>
+        <p>
+          Diamond color actually measures the <strong>absence</strong> of color. The most valuable diamonds are completely colorless,
+          allowing more light to pass through and creating more sparkle.
+        </p>
+        <p>
+          The GIA color scale begins with D (colorless) and goes to Z (light yellow or brown). We carry diamonds in the D to J range — the most desirable grades.
+        </p>
+
+        <!-- Color scale -->
+        <div class="my-8 overflow-x-auto">
+          <div class="flex gap-2 min-w-[500px]">
+            {["D", "E", "F", "G", "H", "I", "J"].map((grade, i) => {
+              const opacity = 5 + i * 8;
+              return (
+                <div class="flex-1 text-center">
+                  <div
+                    class="w-full aspect-square rounded-full mx-auto mb-2 border-2 border-muted"
+                    style={`background: linear-gradient(135deg, rgba(255,248,220,${opacity/100}), rgba(255,235,180,${opacity/100}))`}
+                  ></div>
+                  <span class="text-label-md text-on-surface block">{grade}</span>
+                  <span class="text-caption text-text-light block">
+                    {colorLabels[grade]}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <!-- Clarity -->
+      <section class="mb-16 reveal" id="clarity">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-12 h-12 rounded-md bg-accent/10 flex items-center justify-center flex-shrink-0">
+            <span class="text-2xl font-serif text-accent" style="font-family: var(--font-serif);">C</span>
+          </div>
+          <h2 class="!mt-0 !mb-0">Clarity — The Purity Factor</h2>
+        </div>
+        <p>
+          Clarity measures the presence of internal characteristics called <strong>inclusions</strong> and
+          surface characteristics called <strong>blemishes</strong>. Diamonds with fewer and smaller imperfections receive higher clarity grades.
+        </p>
+
+        <!-- Clarity scale -->
+        <div class="my-8 bg-surface border border-muted rounded-md overflow-hidden">
+          {[
+            { grade: "FL", name: "Flawless", desc: "No inclusions or blemishes under 10× magnification" },
+            { grade: "IF", name: "Internally Flawless", desc: "No inclusions under 10× magnification" },
+            { grade: "VVS1–VVS2", name: "Very Very Slightly Included", desc: "Inclusions difficult to see under 10× magnification" },
+            { grade: "VS1–VS2", name: "Very Slightly Included", desc: "Minor inclusions visible under 10× magnification" },
+            { grade: "SI1–SI2", name: "Slightly Included", desc: "Inclusions noticeable under 10× magnification" },
+          ].map((item) => (
+            <div class="flex items-start gap-4 px-6 py-4 border-b border-muted last:border-0">
+              <span class="text-label-md text-accent min-w-[90px] pt-0.5">{item.grade}</span>
+              <div>
+                <span class="text-body-sm font-semibold text-on-surface block">{item.name}</span>
+                <span class="text-caption text-text-light">{item.desc}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Carat -->
+      <section class="mb-16 reveal" id="carat">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-12 h-12 rounded-md bg-accent/10 flex items-center justify-center flex-shrink-0">
+            <span class="text-2xl font-serif text-accent" style="font-family: var(--font-serif);">C</span>
+          </div>
+          <h2 class="!mt-0 !mb-0">Carat — The Weight</h2>
+        </div>
+        <p>
+          A carat is the unit of measurement for diamond weight. One carat equals 200 milligrams.
+          Larger diamonds are more rare, which is why the price per carat increases with size.
+        </p>
+        <p>
+          However, two diamonds of equal carat weight can have very different values depending on their cut, color, and clarity.
+          A smaller diamond with superior cut and clarity may be more brilliant than a larger one with inferior grades.
+        </p>
+
+        <!-- Carat size comparison -->
+        <div class="my-8 flex items-end justify-center gap-6 py-8">
+          {[
+            { ct: "0.50", size: 32 },
+            { ct: "1.00", size: 44 },
+            { ct: "1.50", size: 54 },
+            { ct: "2.00", size: 62 },
+            { ct: "3.00", size: 72 },
+          ].map((item) => (
+            <div class="text-center">
+              <div
+                class="rounded-full bg-accent/10 border-2 border-accent/30 mx-auto mb-3"
+                style={`width: ${item.size}px; height: ${item.size}px;`}
+              ></div>
+              <span class="text-label-md text-on-surface block">{item.ct}ct</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <div class="text-center py-8 reveal">
+        <hr class="divider-gold mx-auto mb-8" />
+        <h2 class="text-headline-md mb-4">Ready to Choose Your Diamond?</h2>
+        <p class="text-body-md text-text-light mb-8 max-w-lg mx-auto">
+          Now that you understand the 4Cs, explore our collection and find the perfect diamond for your needs.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/diamonds/" class="btn btn-primary">Browse Diamonds</a>
+          <a
+            href={getWhatsAppLink("Hi, I'd like help choosing a diamond. Can you guide me through the 4Cs?")}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-whatsapp"
+          >
+            Ask an Expert
+          </a>
+        </div>
+      </div>
+    </div>
+  </article>
+</Layout>

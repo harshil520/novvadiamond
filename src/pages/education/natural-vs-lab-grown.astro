@@ -1,0 +1,122 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getWhatsAppLink } from "../../data/config";
+---
+
+<Layout
+  title="Natural vs Lab-Grown Diamonds — Honest Comparison | Novva Diamonds"
+  description="An honest, unbiased comparison between natural and lab-grown diamonds. Learn the similarities, differences, and how to choose the right diamond for you."
+>
+  <nav class="bg-surface border-b border-muted" aria-label="Breadcrumb">
+    <div class="container-luxe py-4">
+      <ol class="flex items-center gap-2 text-caption text-text-light">
+        <li><a href="/" class="hover:text-accent transition-colors">Home</a></li>
+        <li><span class="mx-1">/</span></li>
+        <li><a href="/education/" class="hover:text-accent transition-colors">Education</a></li>
+        <li><span class="mx-1">/</span></li>
+        <li class="text-on-surface font-semibold">Natural vs Lab-Grown</li>
+      </ol>
+    </div>
+  </nav>
+
+  <article class="section-padding bg-surface-warm">
+    <div class="container-narrow rich-text">
+      <div class="text-center mb-16 reveal">
+        <span class="overline block mb-4">Diamond Education</span>
+        <h1 class="text-headline-lg mb-4" style="font-size: clamp(28px, 4vw, 44px);">Natural vs Lab-Grown Diamonds</h1>
+        <hr class="divider-gold mx-auto mb-6" />
+        <p class="text-body-lg text-text-light max-w-2xl mx-auto">
+          Both natural and lab-grown diamonds are real diamonds. Here's an honest comparison
+          to help you make an informed choice.
+        </p>
+      </div>
+
+      <section class="mb-12 reveal">
+        <h2>Both Are Real Diamonds</h2>
+        <p>
+          The most important thing to understand is that <strong>lab-grown diamonds are real diamonds</strong>.
+          They have the exact same physical, chemical, and optical properties as natural diamonds.
+          Even trained gemologists cannot distinguish between them without specialized equipment.
+        </p>
+        <p>
+          The only difference is their origin: natural diamonds formed deep within the Earth over billions of years,
+          while lab-grown diamonds are created in controlled laboratory environments using advanced technology.
+        </p>
+      </section>
+
+      <section class="mb-12 reveal">
+        <h2>Side-by-Side Comparison</h2>
+        <div class="bg-surface border border-muted rounded-md overflow-hidden my-6">
+          <div class="grid grid-cols-3 gap-0 bg-surface-marble border-b border-muted px-6 py-3">
+            <span class="text-label-md text-on-surface">Characteristic</span>
+            <span class="text-label-md text-accent text-center">Natural</span>
+            <span class="text-label-md text-accent text-center">Lab-Grown</span>
+          </div>
+          {[
+            { aspect: "Chemical Composition", natural: "Pure Carbon (C)", lab: "Pure Carbon (C)" },
+            { aspect: "Crystal Structure", natural: "Cubic", lab: "Cubic" },
+            { aspect: "Hardness (Mohs)", natural: "10", lab: "10" },
+            { aspect: "Refractive Index", natural: "2.417", lab: "2.417" },
+            { aspect: "Brilliance & Fire", natural: "Identical", lab: "Identical" },
+            { aspect: "Origin", natural: "Earth (billions of years)", lab: "Laboratory (weeks)" },
+            { aspect: "Rarity", natural: "Finite supply", lab: "Reproducible" },
+            { aspect: "Certification", natural: "GIA / IGI", lab: "GIA / IGI" },
+            { aspect: "Value Retention", natural: "Higher", lab: "Lower" },
+            { aspect: "Environmental Impact", natural: "Mining required", lab: "Lower footprint" },
+            { aspect: "Price Point", natural: "Higher", lab: "More accessible" },
+          ].map((row) => (
+            <div class="grid grid-cols-3 gap-0 px-6 py-3 border-b border-muted last:border-0">
+              <span class="text-body-sm font-semibold text-on-surface">{row.aspect}</span>
+              <span class="text-body-sm text-text-light text-center">{row.natural}</span>
+              <span class="text-body-sm text-text-light text-center">{row.lab}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="mb-12 reveal">
+        <h2>When to Choose Natural</h2>
+        <ul>
+          <li>You value <strong>rarity</strong> and the idea of a diamond formed over billions of years</li>
+          <li>You want a diamond that may hold or appreciate in <strong>long-term value</strong></li>
+          <li>You're purchasing for a <strong>significant investment</strong> or heirloom piece</li>
+          <li>You prefer the <strong>traditional</strong> diamond experience</li>
+        </ul>
+      </section>
+
+      <section class="mb-12 reveal">
+        <h2>When to Choose Lab-Grown</h2>
+        <ul>
+          <li>You want a <strong>larger or higher-quality</strong> diamond for your budget</li>
+          <li>You prefer a more <strong>environmentally conscious</strong> choice</li>
+          <li>You're looking for an <strong>excellent value</strong> without compromising on beauty</li>
+          <li>You want a diamond that's chemically and optically <strong>identical to natural</strong></li>
+        </ul>
+      </section>
+
+      <section class="mb-12 reveal">
+        <h2>Our Position</h2>
+        <p>
+          At Novva Diamonds, we believe the best diamond is the one that's right for <strong>you</strong>.
+          That's why we offer both natural and lab-grown diamonds, each certified by GIA or IGI to the same rigorous standards.
+        </p>
+        <p>
+          We don't push one over the other. We provide transparent information and let you make the choice
+          that aligns with your values, preferences, and budget.
+        </p>
+      </section>
+
+      <div class="text-center py-8 reveal">
+        <hr class="divider-gold mx-auto mb-8" />
+        <h2 class="text-headline-md mb-4">Explore Both Collections</h2>
+        <p class="text-body-md text-text-light mb-8 max-w-lg mx-auto">
+          Browse our natural and lab-grown diamond collections, or chat with us for personalized recommendations.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/diamonds/?origin=Natural" class="btn btn-primary">Natural Diamonds</a>
+          <a href="/diamonds/?origin=Lab-Grown" class="btn btn-secondary">Lab-Grown Diamonds</a>
+        </div>
+      </div>
+    </div>
+  </article>
+</Layout>

@@ -1,0 +1,34 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+
+// Surat — eastern shore of Gulf of Khambhat (viewBox 612×696)
+const SURAT = { x: 96, y: 386 };
+const VIEWBOX = { width: 612, height: 696 };
+
+const suratX = (SURAT.x / VIEWBOX.width) * 100;
+const suratY = (SURAT.y / VIEWBOX.height) * 100;
+
+const svgPath = path.join(process.cwd(), "public/maps/india.svg");
+const indiaSvg = fs.readFileSync(svgPath, "utf-8");
+---
+
+<div class="india-map relative w-full rounded-md overflow-hidden border border-muted bg-surface-marble">
+  <Fragment set:html={indiaSvg} />
+
+  <!-- Label overlay (pin is drawn in SVG for precise placement) -->
+  <div
+    class="absolute pointer-events-none transform -translate-x-1/2"
+    style={`left: ${suratX}%; top: ${suratY}%; margin-top: 18px;`}
+    aria-hidden="true"
+  >
+    <div class="bg-surface/95 backdrop-blur-sm border border-muted rounded-sm px-3 py-1.5 text-center shadow-subtle whitespace-nowrap">
+      <span class="text-label-md text-on-surface block leading-tight">Surat</span>
+      <span class="text-caption text-text-light">Diamond Market · Gujarat</span>
+    </div>
+  </div>
+
+  <p class="sr-only">
+    Map of India showing Surat in southwestern Gujarat, home to the Surat Diamond Market and the global diamond cutting industry.
+  </p>
+</div>

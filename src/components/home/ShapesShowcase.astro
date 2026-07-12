@@ -1,0 +1,475 @@
+---
+import { siteConfig, getWhatsAppLink } from "../../data/config";
+
+const shapes = [
+  {
+    name: "Round",
+    svgPath: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z",
+    tagline: "The Gold Standard of Light Return",
+    description: "Designed with 58 facets mathematically engineered to maximize fire, brilliance, and scintillation. Crafted by Surat's most skilled artisans, it is the most popular cut, reflecting over 90% of entering light.",
+    brilliance: "10/10",
+    fire: "Exceptional",
+    ratio: "1.00 - 1.03",
+    video: "/shape_videos/round_video.mp4",
+    image: "/shape_Images/round.jpeg",
+    trust: "Surat's signature triple-excellent cut standard."
+  },
+  {
+    name: "Oval",
+    svgPath: "M12 2C7.58 2 4 6.03 4 12s3.58 10 8 10 8-4.03 8-10S16.42 2 12 2z",
+    tagline: "Elegant Length & Modern Sparkle",
+    description: "An elongated brilliant cut that combines the sparkle of a round diamond with a flattering shape that makes fingers appear longer and more slender.",
+    brilliance: "9/10",
+    fire: "Very High",
+    ratio: "1.30 - 1.50",
+    video: "/shape_videos/oval_video.mp4",
+    image: "/shape_Images/oval.jpeg",
+    trust: "Masterfully proportioned to prevent the 'bow-tie' effect."
+  },
+  {
+    name: "Emerald",
+    svgPath: "M5 4h14l2 3v10l-2 3H5l-2-3V7l2-3z",
+    tagline: "Step-Cut Elegance & Hall of Mirrors Clarity",
+    description: "Features long, parallel facets that highlight the diamond's clarity and color. Its step-cut structure offers a vintage, architectural look with dramatic flashes of light.",
+    brilliance: "7/10",
+    fire: "Sophisticated",
+    ratio: "1.30 - 1.50",
+    video: "/shape_videos/emerald_video.mp4",
+    image: "/shape_Images/emerald.jpeg",
+    trust: "Requires exceptional clarity grading to ensure absolute transparency."
+  },
+  {
+    name: "Princess",
+    svgPath: "M4 4h16v16H4z",
+    tagline: "Contemporary Silhouette & Intense Sparkle",
+    description: "The premier square cut featuring sharp corners and a pyramidal facet structure. It offers a modern aesthetic with maximum fire and a high yield cut pattern.",
+    brilliance: "8.5/10",
+    fire: "Very High",
+    ratio: "1.00 - 1.05",
+    video: "/shape_videos/princess_video.mp4",
+    image: "/shape_Images/princess.jpeg",
+    trust: "Perfectly symmetric facet alignment ensures corner-to-corner sparkle."
+  },
+  {
+    name: "Radiant",
+    svgPath: "M5 3h14l3 4v10l-3 4H5l-3-4V7l3-4z",
+    tagline: "Brilliant Step-Hybrid Fusion",
+    description: "Combines the elegant shape of an emerald cut with the fiery facet pattern of a round brilliant. Perfect for those who want both an elongated shape and high-intensity sparkle.",
+    brilliance: "9/10",
+    fire: "High",
+    ratio: "1.15 - 1.35",
+    video: "/shape_videos/radiant.mp4",
+    image: "/shape_Images/radiant.jpeg",
+    trust: "Trimmed corners prevent chipping, enhancing durability."
+  },
+  {
+    name: "Marquise",
+    svgPath: "M12 2C8 2 3 7 3 12s5 10 9 10 9-5 9-10S16 2 12 2z",
+    tagline: "Dramatic Silhouette & Maximum Visual Size",
+    description: "A football-shaped diamond with pointed ends. Its elongated silhouette creates the largest surface area per carat of any shape, making the diamond appear larger than its weight.",
+    brilliance: "8.5/10",
+    fire: "High",
+    ratio: "1.75 - 2.15",
+    video: "/shape_videos/marquise_video.mp4",
+    image: "/shape_Images/marquise.jpeg",
+    trust: "Hand-finished points for high impact strength and durability."
+  },
+  {
+    name: "Pear",
+    svgPath: "M12 2c-1.5 0-3 1.5-4.5 4.5C5.5 9.5 4 13 4 16c0 3.31 3.58 6 8 6s8-2.69 8-6c0-3-1.5-6.5-3.5-9.5C15 3.5 13.5 2 12 2z",
+    tagline: "A Graceful Teardrop Profile",
+    description: "A romantic blend of round and marquise shapes. Its teardrop silhouette is both unique and classic, offering excellent fire and scintillation on the finger.",
+    brilliance: "8.5/10",
+    fire: "Very High",
+    ratio: "1.45 - 1.70",
+    video: "/shape_videos/pear_video.mp4",
+    image: "/shape_Images/pear.jpeg",
+    trust: "Crafted to yield optimal weight distribution and balanced lobes."
+  },
+  {
+    name: "Cushion",
+    svgPath: "M6 4h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z",
+    tagline: "Vintage Charm & Pillowy Softness",
+    description: "A classic antique cut with rounded corners and large facets. It excels at displaying colorful flashes of light (fire) in a soft, pillow-like shape.",
+    brilliance: "8/10",
+    fire: "Maximum",
+    ratio: "1.00 - 1.05",
+    video: null,
+    image: "/shape_Images/cushion.jpeg",
+    trust: "Polished to preserve the vintage charm of large facet light play."
+  },
+  {
+    name: "Asscher",
+    svgPath: "M7 3h10l4 4v10l-4 4H7l-4-4V7l4-4z",
+    tagline: "Vintage Art-Deco Octagonal Cut",
+    description: "A square step-cut diamond with heavily trimmed corners. It creates an intriguing 'windmill' pattern and has a dramatic vintage aesthetic.",
+    brilliance: "7/10",
+    fire: "Elegant",
+    ratio: "1.00 - 1.03",
+    video: null,
+    image: "/shape_Images/asscher.jpeg",
+    trust: "Meticulous step alignment creates a mesmerizing hall-of-mirrors effect."
+  },
+  {
+    name: "Heart",
+    svgPath: "M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z",
+    tagline: "The Ultimate Symbol of Romance",
+    description: "Requires extreme precision and craftsmanship to cut the identical halves and distinct cleft. It stands out as a unique and emotional choice.",
+    brilliance: "8/10",
+    fire: "High",
+    ratio: "0.95 - 1.02",
+    video: null,
+    image: "/shape_Images/heart.jpeg",
+    trust: "Requires master-level symmetry to ensure perfectly balanced lobes."
+  }
+];
+
+// Build initial WhatsApp link for default active shape (Round)
+const defaultWhatsAppMsg = `Hi Novva Diamonds! I saw the 360° rotation video of the Round cut diamond on your website. I'm interested in looking for a certified loose Round diamond in your collection. Can you help me?`;
+const defaultWhatsAppUrl = getWhatsAppLink(defaultWhatsAppMsg);
+---
+
+<section class="section-padding bg-premium-dark text-white" id="diamond-shapes">
+  <div class="container-luxe">
+    <!-- Section Header -->
+    <div class="text-center mb-12 reveal">
+      <span class="overline block mb-4">Explore by Shape</span>
+      <h2 class="text-headline-lg text-white mb-4" style="font-size: clamp(28px, 4vw, 44px);">
+        Brilliance in Motion
+      </h2>
+      <hr class="divider-gold mx-auto mb-6" />
+      <p class="text-body-lg text-white/70 max-w-2xl mx-auto">
+        Witness the sparkle, fire, and facet alignment in high-definition 360-degree rotation.
+        Sourced directly from Surat, India, and certified by GIA or IGI.
+      </p>
+    </div>
+
+    <!-- Main Interactive Grid/Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 max-w-6xl mx-auto">
+      
+      <!-- Left Column: The Shape Selector Panel (grid of 10 shapes) -->
+      <div class="lg:col-span-5 flex flex-col justify-between gap-6 reveal stagger-1">
+        <div>
+          <h3 class="text-overline text-accent mb-4 tracking-wider text-[11px]">Select a Diamond Shape</h3>
+          
+          <!-- Wrapper allows horizontal swipe on mobile, strict grid on desktop -->
+          <div class="flex lg:grid lg:grid-cols-2 gap-2 lg:gap-3 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 scrollbar-none snap-x snap-mandatory" id="shape-selector-container">
+            {
+              shapes.map((shape, i) => (
+                <button
+                  type="button"
+                  data-shape={shape.name.toLowerCase()}
+                  data-tagline={shape.tagline}
+                  data-description={shape.description}
+                  data-brilliance={shape.brilliance}
+                  data-fire={shape.fire}
+                  data-ratio={shape.ratio}
+                  data-trust={shape.trust}
+                  data-video={shape.video || ""}
+                  class={`shape-tab-btn flex-shrink-0 min-w-[150px] lg:min-w-0 snap-align-start group flex items-center gap-3 p-3.5 rounded-none border text-left transition-all duration-300 cursor-pointer ${
+                    i === 0 
+                      ? "border-accent bg-white/10 text-white" 
+                      : "border-white/10 hover:border-white/30 hover:bg-white/5 text-white/70"
+                  }`}
+                >
+                  <!-- Tiny SVG icon representation -->
+                  <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-accent/30 transition-colors duration-300 flex-shrink-0">
+                    <svg class={`w-4 h-4 transition-colors duration-300 ${i === 0 ? "text-accent" : "text-white/60 group-hover:text-accent"}`} fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d={shape.svgPath} />
+                    </svg>
+                  </div>
+                  <div class="flex flex-col min-w-0">
+                    <span class="text-xs font-bold uppercase tracking-wider font-sans group-hover:text-white transition-colors duration-300 truncate">
+                      {shape.name}
+                    </span>
+                    <span class="text-[9px] text-white/40 font-sans tracking-normal mt-0.5 whitespace-nowrap">
+                      {shape.video ? "🎥 360° Video" : "💬 Video on Request"}
+                    </span>
+                  </div>
+                </button>
+              ))
+            }
+          </div>
+        </div>
+        
+        <!-- Trust mini-banner on bottom left -->
+        <div class="hidden lg:block p-5 bg-white/5 border border-white/10 rounded-none">
+          <h4 class="text-xs font-bold text-accent uppercase tracking-widest mb-2">Direct Sourcing from Surat</h4>
+          <p class="text-xs text-white/60 leading-relaxed">
+            Over 90% of the world's diamonds are cut and polished in Surat. By sourcing directly from our master polishers, we eliminate middle-man markups while enforcing strict GIA and IGI grading consistency.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Video Preview & Details Card -->
+      <div class="lg:col-span-7 flex flex-col reveal stagger-2">
+        <div class="bg-black/30 border border-white/10 p-5 sm:p-7 flex flex-col justify-between h-full relative min-h-[550px] rounded-none">
+          
+          <!-- Media Showcase (Video / Image Container) -->
+          <div class="relative w-full aspect-video bg-black/60 border border-white/10 overflow-hidden flex items-center justify-center rounded-none" id="media-showcase-container">
+            
+            <!-- Video Elements (Preloaded, hidden by default except the first one) -->
+            {
+              shapes.map((shape, i) => (
+                shape.video ? (
+                  <video
+                    id={`media-element-${shape.name.toLowerCase()}`}
+                    class={`media-preview absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ease-in-out ${i === 0 ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"}`}
+                    src={shape.video}
+                    loop
+                    muted
+                    playsinline
+                    preload="auto"
+                  />
+                ) : (
+                  <img
+                    id={`media-element-${shape.name.toLowerCase()}`}
+                    class={`media-preview absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ease-in-out ${i === 0 ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"}`}
+                    src={shape.image}
+                    alt={`${shape.name} Diamond`}
+                  />
+                )
+              ))
+            }
+            
+            <!-- Absolute badges for status -->
+            <div class="absolute top-4 left-4 z-20 flex flex-col gap-1.5 pointer-events-none">
+              <span id="rotation-badge" class="badge badge-accent !text-[9px] !px-2.5 !py-0.5 tracking-widest shadow-md">
+                360° SPIN PREVIEW
+              </span>
+              <span id="request-badge" class="badge !bg-primary-dark !text-white !border border-accent/30 !text-[9px] !px-2.5 !py-0.5 tracking-widest shadow-md hidden">
+                VIDEO ON REQUEST
+              </span>
+            </div>
+            
+            <div class="absolute top-4 right-4 z-20 pointer-events-none">
+              <span class="badge !bg-black/70 !text-white !border border-white/20 !text-[9px] !px-2.5 !py-0.5 tracking-widest">
+                GIA & IGI STANDARDS
+              </span>
+            </div>
+          </div>
+
+          <!-- Dynamic Text Content -->
+          <div class="mt-6 flex-1 flex flex-col justify-between">
+            <div class="animate-fade-in" id="preview-text-block">
+              <div class="flex items-baseline justify-between gap-4 flex-wrap mb-2">
+                <h3 id="display-title" class="text-headline-md text-white font-serif tracking-wide">
+                  Round Brilliant
+                </h3>
+                <span id="display-tagline" class="text-xs text-accent font-sans font-semibold tracking-wider">
+                  The Gold Standard of Light Return
+                </span>
+              </div>
+              
+              <hr class="border-white/10 my-3" />
+              
+              <p id="display-description" class="text-body-md text-white/70 leading-relaxed mb-5">
+                Designed with 58 facets mathematically engineered to maximize fire, brilliance, and scintillation. Crafted by Surat's most skilled artisans, it is the most popular cut, reflecting over 90% of entering light.
+              </p>
+
+              <!-- Dynamic Specs Grid -->
+              <div class="grid grid-cols-3 gap-3 bg-white/5 border border-white/10 p-3.5 mb-6">
+                <div class="text-center border-r border-white/10">
+                  <span class="block text-[9px] uppercase tracking-wider text-white/40 mb-1">Brilliance</span>
+                  <span id="display-brilliance" class="text-xs font-bold text-white font-mono">10/10</span>
+                </div>
+                <div class="text-center border-r border-white/10">
+                  <span class="block text-[9px] uppercase tracking-wider text-white/40 mb-1">Fire / Cut</span>
+                  <span id="display-fire" class="text-xs font-bold text-white font-mono">Exceptional</span>
+                </div>
+                <div class="text-center">
+                  <span class="block text-[9px] uppercase tracking-wider text-white/40 mb-1">Ideal Ratio</span>
+                  <span id="display-ratio" class="text-xs font-bold text-white font-mono">1.00 - 1.03</span>
+                </div>
+              </div>
+              
+              <!-- Trust info text -->
+              <p id="display-trust-container" class="text-[11px] italic text-white/50 mb-6 flex items-center gap-2">
+                <svg class="w-3.5 h-3.5 text-accent flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M2.166 4.9C2.044 5.342 2 5.808 2 6.286c0 4.148 2.63 7.683 6.3 9.04a.75.75 0 00.55 0 11.94 11.94 0 005.158-4.225 12.025 12.025 0 001.992-4.815c.012-.047.02-.095.034-.142.122-.442.166-.908.166-1.386 0-.323-.025-.64-.075-.95a.75.75 0 00-.518-.598l-6.5-2a.75.75 0 00-.45 0l-6.5 2a.75.75 0 00-.517.6zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                </svg>
+                <span>Trust Seal: <span id="display-trust-text" class="text-white/70">Surat's signature triple-excellent cut standard.</span></span>
+              </p>
+            </div>
+
+            <!-- Dynamic CTAs -->
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a
+                id="cta-browse"
+                href="/diamonds/?shape=Round"
+                class="btn btn-primary !h-11 !min-w-0 !px-4 !text-[11px] flex-1 justify-center rounded-none"
+              >
+                Browse Certified Round Diamonds
+              </a>
+              <a
+                id="cta-whatsapp"
+                href={defaultWhatsAppUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-whatsapp !h-11 !min-w-0 !px-4 !text-[11px] flex-1 justify-center rounded-none gap-1.5"
+              >
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                <span id="cta-whatsapp-text">Consult Expert for Round</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- Hide horizontal scrollbar for mobile selector -->
+<style>
+  #shape-selector-container::-webkit-scrollbar {
+    display: none;
+  }
+  #shape-selector-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+
+<!-- Client Side Script for Dynamic Tab Switching -->
+<script>
+  import { siteConfig } from "../../data/config";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll(".shape-tab-btn");
+    const mediaElements = document.querySelectorAll(".media-preview");
+    
+    // Display elements
+    const displayTitle = document.getElementById("display-title");
+    const displayTagline = document.getElementById("display-tagline");
+    const displayDescription = document.getElementById("display-description");
+    const displayBrilliance = document.getElementById("display-brilliance");
+    const displayFire = document.getElementById("display-fire");
+    const displayRatio = document.getElementById("display-ratio");
+    const displayTrustText = document.getElementById("display-trust-text");
+    
+    // Badges
+    const rotationBadge = document.getElementById("rotation-badge");
+    const requestBadge = document.getElementById("request-badge");
+    
+    // CTAs
+    const ctaBrowse = document.getElementById("cta-browse") as HTMLAnchorElement;
+    const ctaWhatsapp = document.getElementById("cta-whatsapp") as HTMLAnchorElement;
+    const ctaWhatsappText = document.getElementById("cta-whatsapp-text");
+    const textBlock = document.getElementById("preview-text-block");
+
+    // Play initial video (Round)
+    const initialVideo = document.getElementById("media-element-round") as HTMLVideoElement;
+    if (initialVideo) {
+      initialVideo.play().catch(() => {});
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const shapeName = btn.getAttribute("data-shape") || "";
+        const capitalizedShape = shapeName.charAt(0).toUpperCase() + shapeName.slice(1);
+        
+        const tagline = btn.getAttribute("data-tagline") || "";
+        const description = btn.getAttribute("data-description") || "";
+        const brilliance = btn.getAttribute("data-brilliance") || "";
+        const fire = btn.getAttribute("data-fire") || "";
+        const ratio = btn.getAttribute("data-ratio") || "";
+        const trust = btn.getAttribute("data-trust") || "";
+        const videoSrc = btn.getAttribute("data-video") || "";
+
+        // 1. Update active tab buttons styling
+        buttons.forEach((b) => {
+          b.classList.remove("border-accent", "bg-white/10", "text-white");
+          b.classList.add("border-white/10", "hover:border-white/30", "hover:bg-white/5", "text-white/70");
+          
+          // Reset internal icon stroke color
+          const icon = b.querySelector("svg");
+          if (icon) {
+            icon.classList.remove("text-accent");
+            icon.classList.add("text-white/60");
+          }
+        });
+
+        btn.classList.add("border-accent", "bg-white/10", "text-white");
+        btn.classList.remove("border-white/10", "hover:border-white/30", "hover:bg-white/5", "text-white/70");
+        const activeIcon = btn.querySelector("svg");
+        if (activeIcon) {
+          activeIcon.classList.remove("text-white/60");
+          activeIcon.classList.add("text-accent");
+        }
+
+        // 2. Animate and update text fields
+        if (textBlock) {
+          textBlock.classList.remove("animate-fade-in");
+          // Trigger reflow to restart CSS animation
+          void textBlock.offsetWidth;
+          textBlock.classList.add("animate-fade-in");
+        }
+
+        if (displayTitle) displayTitle.innerText = `${capitalizedShape} ${capitalizedShape === "Heart" || capitalizedShape === "Pear" ? "Shape" : "Cut"}`;
+        if (displayTagline) displayTagline.innerText = tagline;
+        if (displayDescription) displayDescription.innerText = description;
+        if (displayBrilliance) displayBrilliance.innerText = brilliance;
+        if (displayFire) displayFire.innerText = fire;
+        if (displayRatio) displayRatio.innerText = ratio;
+        if (displayTrustText) displayTrustText.innerText = trust;
+
+        // 3. Switch preview media (video or image)
+        mediaElements.forEach((el) => {
+          const mediaHtml = el as HTMLMediaElement;
+          
+          // Stop any playing video
+          if (mediaHtml.tagName === "VIDEO") {
+            mediaHtml.pause();
+          }
+          
+          el.classList.remove("opacity-100", "z-10");
+          el.classList.add("opacity-0", "z-0", "pointer-events-none");
+        });
+
+        // Activate selected media
+        const activeMedia = document.getElementById(videoSrc ? `media-element-${shapeName}` : `media-element-${shapeName}`) as HTMLMediaElement;
+        if (activeMedia) {
+          activeMedia.classList.add("opacity-100", "z-10");
+          activeMedia.classList.remove("opacity-0", "z-0", "pointer-events-none");
+          
+          if (activeMedia.tagName === "VIDEO") {
+            activeMedia.play().catch(() => {});
+            
+            // Toggle badges
+            if (rotationBadge) rotationBadge.classList.remove("hidden");
+            if (requestBadge) requestBadge.classList.add("hidden");
+          } else {
+            // Toggle badges for static fallback image
+            if (rotationBadge) rotationBadge.classList.add("hidden");
+            if (requestBadge) requestBadge.classList.remove("hidden");
+          }
+        }
+
+        // 4. Update CTAs (Catalog Filter & Custom WhatsApp message)
+        if (ctaBrowse) {
+          ctaBrowse.href = `/diamonds/?shape=${capitalizedShape}`;
+          ctaBrowse.innerText = `Browse Certified ${capitalizedShape} Diamonds`;
+        }
+
+        if (ctaWhatsapp) {
+          const isVideoAvailable = !!videoSrc;
+          const msg = isVideoAvailable
+            ? `Hi Novva Diamonds! I saw the 360° rotation video of the ${capitalizedShape} cut diamond on your website. I'm interested in looking for a certified loose ${capitalizedShape} diamond in your collection. Can you help me?`
+            : `Hi Novva Diamonds! I saw the ${capitalizedShape} shape diamond on your website. I would like to request a 360° live video of a certified loose ${capitalizedShape} diamond from your inventory. Can you please share options?`;
+          
+          const phoneClean = siteConfig.whatsapp.number.replace(/[^0-9]/g, "");
+          ctaWhatsapp.href = `https://wa.me/${phoneClean}?text=${encodeURIComponent(msg)}`;
+          
+          if (ctaWhatsappText) {
+            ctaWhatsappText.innerText = isVideoAvailable 
+              ? `Consult Expert for ${capitalizedShape}` 
+              : `Request ${capitalizedShape} Video`;
+          }
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,84 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+
+const topics = [
+  {
+    title: "The 4Cs of Diamonds",
+    description: "Understand Cut, Color, Clarity, and Carat — the four characteristics that determine a diamond's quality and value.",
+    href: "/education/4cs/",
+    icon: "diamond",
+  },
+  {
+    title: "GIA Certification",
+    description: "Learn about the Gemological Institute of America and why GIA certification is the world's most trusted diamond grading standard.",
+    href: "/education/gia-certification/",
+    icon: "shield",
+  },
+  {
+    title: "IGI Certification",
+    description: "Discover the International Gemological Institute and how IGI certification ensures diamond quality and authenticity.",
+    href: "/education/igi-certification/",
+    icon: "shield",
+  },
+  {
+    title: "Natural vs Lab-Grown",
+    description: "An honest comparison of natural and lab-grown diamonds — their similarities, differences, and how to choose.",
+    href: "/education/natural-vs-lab-grown/",
+    icon: "compare",
+  },
+];
+---
+
+<Layout
+  title="Diamond Education — Learn About Diamonds | Novva Diamonds"
+  description="Educate yourself about diamonds before you buy. Learn about the 4Cs, GIA and IGI certification, and the difference between natural and lab-grown diamonds."
+>
+  <PageHero
+    overline="Knowledge Center"
+    title="Diamond Education"
+    description="An informed buyer is a confident buyer. Explore our guides to understand what makes a diamond exceptional and how to choose the right one for you."
+  />
+
+  <!-- Topics Grid -->
+  <section class="section-padding bg-surface-warm">
+    <div class="container-narrow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {
+          topics.map((topic, i) => (
+            <a href={topic.href} class={`card group p-8 reveal stagger-${i + 1} hover:border-accent transition-all`}>
+              <div class="w-12 h-12 rounded-md bg-primary/5 flex items-center justify-center mb-5 group-hover:bg-accent/10 transition-colors">
+                {topic.icon === "diamond" && (
+                  <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 3H5L2 9l10 12L22 9l-3-6zM9.62 8l1.5-3h1.76l1.5 3H9.62z"/>
+                  </svg>
+                )}
+                {topic.icon === "shield" && (
+                  <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                  </svg>
+                )}
+                {topic.icon === "compare" && (
+                  <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M10 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h5v2h2V1h-2v2zm0 15H5l5-6v6zm4-15v2h5v6l-5-6v15h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-5z"/>
+                  </svg>
+                )}
+              </div>
+              <h2 class="text-headline-md mb-3 group-hover:text-accent transition-colors" style="font-size: 20px;">
+                {topic.title}
+              </h2>
+              <p class="text-body-md text-text-light mb-4">{topic.description}</p>
+              <span class="text-label-md text-accent flex items-center gap-2">
+                Learn More
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+

@@ -1,0 +1,116 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { siteConfig } from "../data/config";
+---
+
+<Layout
+  title="Terms & Conditions | Novva Diamonds"
+  description="Read the terms and conditions for using the Novva Diamonds website. Understand our policies regarding diamond inquiries and services."
+>
+  <nav class="bg-surface border-b border-muted" aria-label="Breadcrumb">
+    <div class="container-luxe py-4">
+      <ol class="flex items-center gap-2 text-caption text-text-light">
+        <li><a href="/" class="hover:text-accent transition-colors">Home</a></li>
+        <li><span class="mx-1">/</span></li>
+        <li class="text-on-surface font-semibold">Terms & Conditions</li>
+      </ol>
+    </div>
+  </nav>
+
+  <article class="section-padding bg-surface-warm">
+    <div class="container-narrow rich-text">
+      <div class="text-center mb-16">
+        <h1 class="text-headline-lg mb-4" style="font-size: clamp(28px, 4vw, 40px);">Terms & Conditions</h1>
+        <hr class="divider-gold mx-auto mb-4" />
+        <p class="text-caption text-text-light">Last updated: June 2025</p>
+      </div>
+
+      <section class="mb-10">
+        <h2>Acceptance of Terms</h2>
+        <p>
+          By accessing and using the {siteConfig.name} website, you accept and agree to be bound by these Terms and Conditions.
+          If you do not agree to these terms, please do not use our website.
+        </p>
+      </section>
+
+      <section class="mb-10">
+        <h2>Nature of Service</h2>
+        <p>
+          {siteConfig.name} operates a diamond catalog and inquiry website. We showcase curated diamond samples
+          and facilitate inquiries through WhatsApp. This website is not an e-commerce platform — no purchases
+          can be made directly through the website.
+        </p>
+        <ul>
+          <li>No prices are displayed on the website</li>
+          <li>Diamond availability and pricing are subject to change</li>
+          <li>All purchases are finalized through direct communication with our team</li>
+          <li>Diamonds shown are representative samples and may not reflect exact current inventory</li>
+        </ul>
+      </section>
+
+      <section class="mb-10">
+        <h2>Diamond Information</h2>
+        <p>
+          While we strive to provide accurate information about our diamonds, including certification details,
+          specifications, and imagery:
+        </p>
+        <ul>
+          <li>Images and videos are for illustration purposes and may vary from actual appearance</li>
+          <li>All diamond specifications are based on independent certification (GIA or IGI)</li>
+          <li>We recommend verifying certification details directly with the grading laboratory</li>
+          <li>Availability of specific diamonds is subject to change without notice</li>
+        </ul>
+      </section>
+
+      <section class="mb-10">
+        <h2>Intellectual Property</h2>
+        <p>
+          All content on this website — including text, images, graphics, logos, and design — is the property
+          of {siteConfig.name} and is protected by applicable intellectual property laws. Unauthorized use,
+          reproduction, or distribution is prohibited.
+        </p>
+      </section>
+
+      <section class="mb-10">
+        <h2>Limitation of Liability</h2>
+        <p>
+          {siteConfig.name} shall not be liable for any indirect, incidental, special, or consequential damages
+          arising from your use of this website or reliance on information provided herein. Our website is
+          provided "as is" without warranties of any kind.
+        </p>
+      </section>
+
+      <section class="mb-10">
+        <h2>External Links</h2>
+        <p>
+          Our website may contain links to third-party websites, including WhatsApp and certification laboratories.
+          We are not responsible for the content, privacy policies, or practices of these external sites.
+        </p>
+      </section>
+
+      <section class="mb-10">
+        <h2>Governing Law</h2>
+        <p>
+          These Terms and Conditions are governed by and construed in accordance with the laws of India.
+          Any disputes arising from these terms shall be subject to the exclusive jurisdiction of the courts in Surat, Gujarat, India.
+        </p>
+      </section>
+
+      <section class="mb-10">
+        <h2>Changes to Terms</h2>
+        <p>
+          We reserve the right to update these Terms and Conditions at any time. Changes will be posted on this page
+          with an updated revision date. Continued use of the website after changes constitutes acceptance of the revised terms.
+        </p>
+      </section>
+
+      <section class="mb-10">
+        <h2>Contact</h2>
+        <p>
+          For questions about these Terms and Conditions, please contact us at
+          <a href={`mailto:${siteConfig.email}`} class="text-accent hover:underline">{siteConfig.email}</a>.
+        </p>
+      </section>
+    </div>
+  </article>
+</Layout>

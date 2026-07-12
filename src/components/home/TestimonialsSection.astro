@@ -1,0 +1,73 @@
+---
+const testimonials = [
+  {
+    name: "Sarah M.",
+    country: "Australia",
+    flag: "🇦🇺",
+    quote: "I was hesitant about buying a diamond online, but Novva made the entire experience seamless. The diamond was exactly as described — GIA certified and absolutely stunning. Their WhatsApp support was incredibly responsive.",
+  },
+  {
+    name: "James R.",
+    country: "United States",
+    flag: "🇺🇸",
+    quote: "Outstanding quality and transparency. I purchased a 2ct oval for my fiancée's engagement ring. The direct-from-Surat pricing was unbeatable, and the IGI certification gave me complete confidence.",
+  },
+  {
+    name: "Priya K.",
+    country: "India",
+    flag: "🇮🇳",
+    quote: "As a jewelry retailer, I need reliable diamond suppliers. Novva has consistently delivered exceptional stones with proper certification. Their curated selection saves me hours of sourcing.",
+  },
+  {
+    name: "Emma L.",
+    country: "Canada",
+    flag: "🇨🇦",
+    quote: "The lab-grown diamond I received exceeded my expectations. Beautiful cut, flawless clarity, and the whole process from inquiry to delivery took just 5 days. Truly world-class service.",
+  },
+];
+---
+
+<section class="section-padding bg-surface" id="testimonials">
+  <div class="container-luxe">
+    <!-- Section Header -->
+    <div class="text-center mb-16 reveal">
+      <span class="overline block mb-4">Client Stories</span>
+      <h2 class="text-headline-lg mb-4" style="font-size: clamp(28px, 4vw, 44px);">
+        Trusted Worldwide
+      </h2>
+      <hr class="divider-gold mx-auto mb-6" />
+      <p class="text-body-lg text-text-light max-w-2xl mx-auto">
+        Our commitment to quality and transparency has earned the trust
+        of diamond buyers across the globe.
+      </p>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      {
+        testimonials.map((t, i) => (
+          <div class={`reveal stagger-${i + 1} bg-surface-warm border border-muted rounded-md p-8 relative`}>
+            <!-- Gold quote mark -->
+            <svg class="absolute top-6 right-6 w-8 h-8 text-accent/20" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+            </svg>
+
+            <p class="text-body-md text-text-light mb-6 leading-relaxed italic">
+              "{t.quote}"
+            </p>
+
+            <div class="flex items-center gap-3 pt-4 border-t border-muted">
+              <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-lg">
+                {t.flag}
+              </div>
+              <div>
+                <p class="text-label-md text-on-surface">{t.name}</p>
+                <p class="text-caption text-text-light">{t.country}</p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

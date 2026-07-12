@@ -1,0 +1,227 @@
+/* ═══════════════════════════════════════════════════════════
+   Novva Diamonds — Animations
+   Cinematic micro-animations for a luxury feel
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Scroll Reveal ─── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ─── Diamond Sparkle / Shimmer ─── */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.8) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1) rotate(180deg);
+  }
+}
+
+/* ─── Slide In (Mobile Menu) ─── */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* ─── Hero Entrance ─── */
+@keyframes heroEntrance {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes heroTextEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+@keyframes goldLineExpand {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 60px;
+    opacity: 1;
+  }
+}
+
+/* ─── Surat map pin pulse ─── */
+@keyframes suratPinPulse {
+  0%, 100% {
+    r: 7;
+    opacity: 0.3;
+  }
+  50% {
+    r: 10;
+    opacity: 0.12;
+  }
+}
+
+/* ─── Pulse for WhatsApp ─── */
+@keyframes whatsappPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+/* ─── Floating ─── */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ─── Utility Classes ─── */
+@layer components {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease both;
+  }
+
+  .animate-fade-in-scale {
+    animation: fadeInScale 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+  }
+
+  .animate-hero-entrance {
+    animation: heroEntrance 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+  }
+
+  .animate-hero-text {
+    animation: heroTextEntrance 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+  }
+
+  .animate-gold-line {
+    animation: goldLineExpand 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) 0.4s both;
+  }
+
+  .animate-whatsapp-pulse {
+    animation: whatsappPulse 2s infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(196, 165, 86, 0.1) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s ease infinite;
+  }
+
+  /* Stagger delays for children */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+  .stagger-6 { animation-delay: 0.6s; }
+
+  /* Scroll-reveal: initially hidden, animated by IntersectionObserver */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),
+                transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Image hover zoom */
+  .img-zoom {
+    overflow: hidden;
+  }
+
+  .img-zoom img {
+    transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .img-zoom:hover img {
+    transform: scale(1.05);
+  }
+}

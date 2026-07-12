@@ -1,0 +1,66 @@
+[
+  {
+    "id": "ring-solitaire-01",
+    "name": "Classic Solitaire Ring",
+    "category": "Rings",
+    "description": "A timeless solitaire setting featuring a round brilliant diamond on a polished 18K gold band.",
+    "materials": "18K Gold, Diamond",
+    "images": ["/jewelry/ring-solitaire-1.jpg"]
+  },
+  {
+    "id": "ring-halo-01",
+    "name": "Halo Engagement Ring",
+    "category": "Rings",
+    "description": "Stunning halo setting with a cushion-cut center diamond surrounded by a circle of pavé diamonds.",
+    "materials": "Platinum, Diamonds",
+    "images": ["/jewelry/ring-halo-1.jpg"]
+  },
+  {
+    "id": "pendant-tear-01",
+    "name": "Teardrop Diamond Pendant",
+    "category": "Pendants",
+    "description": "Elegant pear-shaped diamond pendant suspended from a delicate 18K white gold chain.",
+    "materials": "18K White Gold, Diamond",
+    "images": ["/jewelry/pendant-tear-1.jpg"]
+  },
+  {
+    "id": "pendant-solitaire-01",
+    "name": "Solitaire Diamond Pendant",
+    "category": "Pendants",
+    "description": "A single brilliant round diamond set in a classic four-prong pendant setting.",
+    "materials": "18K Gold, Diamond",
+    "images": ["/jewelry/pendant-solitaire-1.jpg"]
+  },
+  {
+    "id": "earring-stud-01",
+    "name": "Diamond Stud Earrings",
+    "category": "Earrings",
+    "description": "Classic round brilliant diamond studs in a secure four-prong basket setting.",
+    "materials": "18K Gold, Diamonds",
+    "images": ["/jewelry/earring-stud-1.jpg"]
+  },
+  {
+    "id": "earring-drop-01",
+    "name": "Diamond Drop Earrings",
+    "category": "Earrings",
+    "description": "Graceful drop earrings featuring pear-shaped diamonds with a delicate halo frame.",
+    "materials": "Platinum, Diamonds",
+    "images": ["/jewelry/earring-drop-1.jpg"]
+  },
+  {
+    "id": "bracelet-tennis-01",
+    "name": "Diamond Tennis Bracelet",
+    "category": "Bracelets",
+    "description": "A continuous line of individually set round brilliant diamonds in a flexible 18K gold bracelet.",
+    "materials": "18K Gold, Diamonds",
+    "images": ["/jewelry/bracelet-tennis-1.jpg"]
+  },
+  {
+    "id": "bracelet-bangle-01",
+    "name": "Diamond Bangle",
+    "category": "Bracelets",
+    "description": "A polished gold bangle accented with channel-set princess-cut diamonds.",
+    "materials": "18K Gold, Diamonds",
+    "images": ["/jewelry/bracelet-bangle-1.jpg"]
+  }
+]

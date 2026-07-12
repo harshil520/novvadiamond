@@ -1,0 +1,140 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CTABanner from "../components/home/CTABanner.astro";
+import PageHero from "../components/PageHero.astro";
+import IndiaMap from "../components/IndiaMap.astro";
+---
+
+<Layout
+  title="About Novva Diamonds — Our Story | Certified Diamonds from Surat, India"
+  description="Novva Diamonds is a certified diamond supplier from Surat, India — the diamond capital of the world. Learn about our story, values, and commitment to quality."
+>
+  <PageHero
+    overline="Our Story"
+    title="About Novva Diamonds"
+    description="A legacy of brilliance, born in Surat — the diamond capital of the world."
+    size="large"
+  />
+
+  <!-- Our Story -->
+  <section class="section-padding bg-surface-warm">
+    <div class="container-narrow">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="reveal">
+          <span class="overline block mb-4">Who We Are</span>
+          <h2 class="text-headline-md mb-6" style="font-size: clamp(24px, 3vw, 32px);">
+            Bringing Surat's Finest Diamonds to the World
+          </h2>
+          <div class="space-y-4 text-body-md text-text-light">
+            <p>
+              Novva Diamonds was founded with a singular vision: to connect discerning buyers worldwide
+              with the finest certified loose diamonds, sourced directly from the heart of Surat, India.
+            </p>
+            <p>
+              Surat is where over 90% of the world's diamonds are cut and polished. This city's centuries-old
+              expertise in diamond craftsmanship is unmatched anywhere on earth. As a company rooted in this
+              heritage, we have direct access to the best artisans, cutters, and stones in the industry.
+            </p>
+            <p>
+              Every diamond in our collection is hand-selected by our team of experts and independently
+              certified by GIA or IGI — ensuring that when you choose a Novva diamond, you're choosing
+              verified quality and authenticity.
+            </p>
+          </div>
+        </div>
+
+        <div class="reveal stagger-2">
+          <IndiaMap />
+          <p class="text-caption text-text-light text-center mt-3">
+            Surat, Gujarat — where over 90% of the world's diamonds are cut and polished
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section-padding bg-surface">
+    <div class="container-narrow">
+      <div class="text-center mb-16 reveal">
+        <span class="overline block mb-4">Our Values</span>
+        <h2 class="text-headline-md" style="font-size: clamp(24px, 3vw, 32px);">Why Choose Novva</h2>
+        <hr class="divider-gold mx-auto mt-4" />
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[
+          {
+            title: "Transparency",
+            description: "We believe in complete openness. Every diamond comes with its full certification details, and we never hide behind vague claims. What you see is what you get.",
+            icon: "eye",
+          },
+          {
+            title: "Quality First",
+            description: "We only carry diamonds that meet our rigorous standards. Each stone is individually inspected by our experts before being added to our collection.",
+            icon: "star",
+          },
+          {
+            title: "Personal Service",
+            description: "Diamond buying should be personal. That's why we offer direct WhatsApp consultation — talk to our experts, get recommendations, and find your perfect stone.",
+            icon: "heart",
+          },
+        ].map((value, i) => (
+          <div class={`text-center reveal stagger-${i + 1}`}>
+            <div class="w-14 h-14 mx-auto rounded-md bg-accent/10 flex items-center justify-center mb-5">
+              {value.icon === "eye" && (
+                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+              )}
+              {value.icon === "star" && (
+                <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+              )}
+              {value.icon === "heart" && (
+                <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              )}
+            </div>
+            <h3 class="text-headline-md mb-3" style="font-size: 20px;">{value.title}</h3>
+            <p class="text-body-md text-text-light">{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Surat Section -->
+  <section class="section-padding bg-surface-warm">
+    <div class="container-narrow">
+      <div class="reveal">
+        <div class="bg-surface border border-muted rounded-md p-10 lg:p-14 text-center">
+          <svg class="w-10 h-10 mx-auto text-accent mb-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+          <h2 class="text-headline-md mb-4" style="font-size: clamp(22px, 3vw, 28px);">
+            Surat — Diamond Capital of the World
+          </h2>
+          <p class="text-body-lg text-text-light max-w-2xl mx-auto mb-6">
+            Over 90% of the world's diamonds pass through Surat for cutting and polishing.
+            This city in Gujarat, India, has been the epicenter of the global diamond trade for centuries.
+            Being based here gives us unparalleled access to the world's finest stones at the most competitive prices.
+          </p>
+          <div class="flex flex-wrap justify-center gap-6 text-label-md text-accent">
+            <span>90% of World's Diamonds</span>
+            <span class="text-muted-dark">·</span>
+            <span>Centuries of Expertise</span>
+            <span class="text-muted-dark">·</span>
+            <span>Direct Sourcing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABanner />
+</Layout>
+

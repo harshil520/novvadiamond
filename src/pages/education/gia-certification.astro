@@ -1,0 +1,103 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout
+  title="GIA Certification — What is GIA? | Novva Diamonds"
+  description="Learn about GIA (Gemological Institute of America) diamond certification. Understand why GIA grading is the gold standard and how to read a GIA certificate."
+>
+  <nav class="bg-surface border-b border-muted" aria-label="Breadcrumb">
+    <div class="container-luxe py-4">
+      <ol class="flex items-center gap-2 text-caption text-text-light">
+        <li><a href="/" class="hover:text-accent transition-colors">Home</a></li>
+        <li><span class="mx-1">/</span></li>
+        <li><a href="/education/" class="hover:text-accent transition-colors">Education</a></li>
+        <li><span class="mx-1">/</span></li>
+        <li class="text-on-surface font-semibold">GIA Certification</li>
+      </ol>
+    </div>
+  </nav>
+
+  <article class="section-padding bg-surface-warm">
+    <div class="container-narrow rich-text">
+      <div class="text-center mb-16 reveal">
+        <span class="overline block mb-4">Diamond Education</span>
+        <h1 class="text-headline-lg mb-4" style="font-size: clamp(28px, 4vw, 44px);">GIA Certification</h1>
+        <hr class="divider-gold mx-auto mb-6" />
+        <p class="text-body-lg text-text-light max-w-2xl mx-auto">
+          The Gemological Institute of America (GIA) is the world's foremost authority in gemology.
+          A GIA certificate is the gold standard in diamond grading.
+        </p>
+      </div>
+
+      <section class="mb-12 reveal">
+        <h2>What is GIA?</h2>
+        <p>
+          Founded in 1931, the <strong>Gemological Institute of America (GIA)</strong> is a nonprofit organization
+          dedicated to research and education in the field of gemology. GIA created the universally accepted
+          standard for describing diamonds — the 4Cs of diamond quality — and the International Diamond Grading System™.
+        </p>
+        <p>
+          GIA is regarded as the world's most trusted name in diamond grading and gem identification because of their
+          consistency, unbiased approach, and scientific rigor. They do not buy, sell, or trade diamonds, ensuring
+          complete objectivity.
+        </p>
+      </section>
+
+      <section class="mb-12 reveal">
+        <h2>Why GIA Certification Matters</h2>
+        <ul>
+          <li><strong>Unbiased and Independent:</strong> GIA does not buy or sell diamonds, so their grading is free from commercial influence.</li>
+          <li><strong>Consistent Standards:</strong> Every diamond is graded by multiple gemologists using the same strict criteria.</li>
+          <li><strong>Global Recognition:</strong> GIA certificates are recognized and trusted by jewelers, retailers, and consumers worldwide.</li>
+          <li><strong>Comprehensive Reporting:</strong> Each report includes a detailed analysis of the 4Cs plus additional quality characteristics.</li>
+          <li><strong>Laser Inscription:</strong> Many GIA-graded diamonds have their report number microscopically laser-inscribed on the girdle for identification.</li>
+        </ul>
+      </section>
+
+      <section class="mb-12 reveal">
+        <h2>How to Read a GIA Certificate</h2>
+        <p>A GIA Diamond Grading Report includes:</p>
+        <div class="bg-surface border border-muted rounded-md overflow-hidden my-6">
+          {[
+            { field: "Report Number", desc: "Unique identification number for the diamond and its report" },
+            { field: "Shape and Cutting Style", desc: "The diamond's shape (Round, Oval, etc.) and faceting pattern" },
+            { field: "Measurements", desc: "The diamond's dimensions in millimeters" },
+            { field: "Carat Weight", desc: "The diamond's weight measured to the hundredth of a carat" },
+            { field: "Color Grade", desc: "The absence of color, graded on a scale from D (colorless) to Z" },
+            { field: "Clarity Grade", desc: "The absence of inclusions and blemishes" },
+            { field: "Cut Grade", desc: "How well the diamond's facets interact with light (for round brilliants)" },
+            { field: "Polish & Symmetry", desc: "Quality of the surface finish and facet alignment" },
+            { field: "Fluorescence", desc: "The diamond's reaction to UV light" },
+          ].map((item) => (
+            <div class="flex items-start gap-4 px-6 py-4 border-b border-muted last:border-0">
+              <span class="text-label-md text-accent min-w-[140px] pt-0.5">{item.field}</span>
+              <span class="text-body-sm text-text-light">{item.desc}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="mb-12 reveal">
+        <h2>Verifying a GIA Certificate</h2>
+        <p>
+          Every GIA report can be verified online at <strong>gia.edu</strong> using the report number. This ensures the
+          authenticity of the certificate and confirms that the diamond's grading has not been altered.
+        </p>
+        <p>
+          At Novva Diamonds, every GIA-certified diamond in our collection comes with its complete certificate number.
+          We encourage buyers to verify each diamond independently before making a decision.
+        </p>
+      </section>
+
+      <div class="text-center py-8 reveal">
+        <hr class="divider-gold mx-auto mb-8" />
+        <h2 class="text-headline-md mb-4">Browse GIA Certified Diamonds</h2>
+        <p class="text-body-md text-text-light mb-8 max-w-lg mx-auto">
+          Explore our collection of GIA certified loose diamonds with full grading details.
+        </p>
+        <a href="/diamonds/?cert=GIA" class="btn btn-primary">View GIA Diamonds</a>
+      </div>
+    </div>
+  </article>
+</Layout>

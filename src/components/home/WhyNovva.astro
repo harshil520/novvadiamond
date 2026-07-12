@@ -1,0 +1,77 @@
+---
+const values = [
+  {
+    icon: "shield",
+    title: "Certified Quality",
+    description: "Every diamond is independently graded and certified by GIA or IGI — the world's most trusted gemological laboratories.",
+  },
+  {
+    icon: "diamond",
+    title: "Direct from Surat",
+    description: "Sourced directly from Surat, India — the diamond cutting and polishing capital of the world — eliminating middlemen for better value.",
+  },
+  {
+    icon: "globe",
+    title: "Global Service",
+    description: "Trusted by buyers across USA, Australia, Canada, Europe, and Kazakhstan. Secure international shipping with full insurance.",
+  },
+  {
+    icon: "chat",
+    title: "Personal Consultation",
+    description: "Connect directly with our diamond experts on WhatsApp. Get personalized recommendations and today's best prices instantly.",
+  },
+];
+---
+
+<section class="section-padding bg-surface" id="why-novva">
+  <div class="container-luxe">
+    <!-- Section Header -->
+    <div class="text-center mb-16 reveal">
+      <span class="overline block mb-4">Why Choose Us</span>
+      <h2 class="text-headline-lg mb-4" style="font-size: clamp(28px, 4vw, 44px);">
+        The Novva Difference
+      </h2>
+      <hr class="divider-gold mx-auto mb-6" />
+      <p class="text-body-lg text-text-light max-w-2xl mx-auto">
+        We combine the expertise of Surat's finest diamond craftsmen with
+        world-class certification and personal white-glove service.
+      </p>
+    </div>
+
+    <!-- Values Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto">
+      {
+        values.map((item, i) => (
+          <div class={`flex gap-5 reveal stagger-${i + 1}`}>
+            <div class="w-14 h-14 rounded-md bg-primary/5 flex items-center justify-center flex-shrink-0">
+              {item.icon === "shield" && (
+                <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                </svg>
+              )}
+              {item.icon === "diamond" && (
+                <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 3H5L2 9l10 12L22 9l-3-6zM9.62 8l1.5-3h1.76l1.5 3H9.62z"/>
+                </svg>
+              )}
+              {item.icon === "globe" && (
+                <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.92 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96z"/>
+                </svg>
+              )}
+              {item.icon === "chat" && (
+                <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/>
+                </svg>
+              )}
+            </div>
+            <div>
+              <h3 class="text-headline-md mb-2" style="font-size: 20px;">{item.title}</h3>
+              <p class="text-body-md text-text-light">{item.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

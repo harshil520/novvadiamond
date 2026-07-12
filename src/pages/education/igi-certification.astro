@@ -1,0 +1,97 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout
+  title="IGI Certification — What is IGI? | Novva Diamonds"
+  description="Learn about IGI (International Gemological Institute) diamond certification. Understand IGI grading standards and when IGI certification is preferred."
+>
+  <nav class="bg-surface border-b border-muted" aria-label="Breadcrumb">
+    <div class="container-luxe py-4">
+      <ol class="flex items-center gap-2 text-caption text-text-light">
+        <li><a href="/" class="hover:text-accent transition-colors">Home</a></li>
+        <li><span class="mx-1">/</span></li>
+        <li><a href="/education/" class="hover:text-accent transition-colors">Education</a></li>
+        <li><span class="mx-1">/</span></li>
+        <li class="text-on-surface font-semibold">IGI Certification</li>
+      </ol>
+    </div>
+  </nav>
+
+  <article class="section-padding bg-surface-warm">
+    <div class="container-narrow rich-text">
+      <div class="text-center mb-16 reveal">
+        <span class="overline block mb-4">Diamond Education</span>
+        <h1 class="text-headline-lg mb-4" style="font-size: clamp(28px, 4vw, 44px);">IGI Certification</h1>
+        <hr class="divider-gold mx-auto mb-6" />
+        <p class="text-body-lg text-text-light max-w-2xl mx-auto">
+          The International Gemological Institute (IGI) is one of the world's largest independent
+          gemological laboratories, trusted for consistent and reliable diamond grading.
+        </p>
+      </div>
+
+      <section class="mb-12 reveal">
+        <h2>What is IGI?</h2>
+        <p>
+          Founded in 1975 in Antwerp, Belgium, the <strong>International Gemological Institute (IGI)</strong> is one of the
+          largest independent gemological organizations in the world. With laboratories on every major continent,
+          IGI has graded more diamonds and gemstones than any other laboratory.
+        </p>
+        <p>
+          IGI is particularly renowned for its expertise in grading <strong>lab-grown diamonds</strong>, where it has
+          established itself as the leading certification body. Their grading process follows the same 4C standards
+          used across the industry.
+        </p>
+      </section>
+
+      <section class="mb-12 reveal">
+        <h2>Why IGI Certification is Trusted</h2>
+        <ul>
+          <li><strong>Global Presence:</strong> Laboratories in Antwerp, Mumbai, New York, Hong Kong, and more — ensuring consistent worldwide standards.</li>
+          <li><strong>Lab-Grown Expertise:</strong> IGI was one of the first labs to offer comprehensive grading for lab-grown diamonds.</li>
+          <li><strong>Detailed Reports:</strong> IGI reports include the full 4Cs analysis plus proportions, fluorescence, and additional observations.</li>
+          <li><strong>Fast Turnaround:</strong> IGI's global lab network enables efficient grading without compromising quality.</li>
+          <li><strong>Verification:</strong> Every IGI report can be verified online at igi.org using the report number.</li>
+        </ul>
+      </section>
+
+      <section class="mb-12 reveal">
+        <h2>IGI vs GIA — How to Choose</h2>
+        <div class="bg-surface border border-muted rounded-md overflow-hidden my-6">
+          <div class="grid grid-cols-3 gap-0 bg-surface-marble border-b border-muted px-6 py-3">
+            <span class="text-label-md text-on-surface">Aspect</span>
+            <span class="text-label-md text-accent text-center">GIA</span>
+            <span class="text-label-md text-accent text-center">IGI</span>
+          </div>
+          {[
+            { aspect: "Founded", gia: "1931", igi: "1975" },
+            { aspect: "Headquarters", gia: "Carlsbad, USA", igi: "Antwerp, Belgium" },
+            { aspect: "Best Known For", gia: "Natural diamonds", igi: "Lab-grown diamonds" },
+            { aspect: "Global Labs", gia: "Selective locations", igi: "Extensive network" },
+            { aspect: "Recognition", gia: "Gold standard for naturals", igi: "Leader for lab-grown" },
+            { aspect: "Grading Standard", gia: "4Cs + Cut Grade", igi: "4Cs + Cut Grade" },
+          ].map((row) => (
+            <div class="grid grid-cols-3 gap-0 px-6 py-3 border-b border-muted last:border-0">
+              <span class="text-body-sm font-semibold text-on-surface">{row.aspect}</span>
+              <span class="text-body-sm text-text-light text-center">{row.gia}</span>
+              <span class="text-body-sm text-text-light text-center">{row.igi}</span>
+            </div>
+          ))}
+        </div>
+        <p>
+          Both GIA and IGI are excellent certification bodies. At Novva Diamonds, we carry diamonds certified by both
+          laboratories, allowing you to choose based on your preference and the diamond's origin.
+        </p>
+      </section>
+
+      <div class="text-center py-8 reveal">
+        <hr class="divider-gold mx-auto mb-8" />
+        <h2 class="text-headline-md mb-4">Browse IGI Certified Diamonds</h2>
+        <p class="text-body-md text-text-light mb-8 max-w-lg mx-auto">
+          Explore our collection of IGI certified loose diamonds, including lab-grown options.
+        </p>
+        <a href="/diamonds/?cert=IGI" class="btn btn-primary">View IGI Diamonds</a>
+      </div>
+    </div>
+  </article>
+</Layout>

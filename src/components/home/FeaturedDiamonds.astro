@@ -1,0 +1,86 @@
+---
+import type { Diamond } from "../../data/config";
+import diamondsData from "../../data/diamonds.json";
+
+const featuredDiamonds = (diamondsData as Diamond[]).filter((d) => d.featured).slice(0, 6);
+---
+
+<section class="section-padding bg-surface-warm" id="featured-diamonds">
+  <div class="container-luxe">
+    <!-- Section Header -->
+    <div class="text-center mb-16 reveal">
+      <span class="overline block mb-4">Curated Collection</span>
+      <h2 class="text-headline-lg mb-4" style="font-size: clamp(28px, 4vw, 44px);">
+        Exceptional Diamonds
+      </h2>
+      <hr class="divider-gold mx-auto mb-6" />
+      <p class="text-body-lg text-text-light max-w-2xl mx-auto">
+        Each diamond in our collection is individually selected and certified by GIA or IGI.
+        Explore our curated selection of Natural and Lab-Grown loose diamonds.
+      </p>
+    </div>
+
+    <!-- Diamond Grid -->
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
+      {
+        featuredDiamonds.map((diamond, i) => (
+          <article class={`card group reveal stagger-${i + 1}`} id={`featured-${diamond.id}`}>
+            <!-- Image -->
+            <a href={`/diamonds/${diamond.id}/`} class="block img-zoom mb-4 aspect-square bg-surface-marble rounded-sm overflow-hidden border border-muted hover:border-accent/30 transition-colors duration-300">
+              <div class="w-full h-full flex items-center justify-center relative bg-white">
+                <img
+                  src={`/shape_Images/${diamond.shape.toLowerCase()}.jpeg`}
+                  alt={`${diamond.carat}ct ${diamond.shape} Diamond`}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <!-- Badges -->
+                <div class="absolute top-2.5 left-2.5 flex gap-1 z-10">
+                  <span class="badge !text-[9px] !px-2 !py-0.5">{diamond.certification}</span>
+                  {diamond.origin === "Lab-Grown" && (
+                    <span class="badge-green badge !text-[9px] !px-2 !py-0.5">Lab</span>
+                  )}
+                </div>
+              </div>
+            </a>
+
+            <!-- Details -->
+            <div class="px-1">
+              <a href={`/diamonds/${diamond.id}/`} class="block mb-2">
+                <h3 class="text-body-md font-semibold text-on-surface mb-0.5 line-clamp-1">
+                  {diamond.carat}ct {diamond.shape}
+                </h3>
+              </a>
+
+              <!-- Specs Row -->
+              <div class="flex items-center gap-1.5 mb-3 text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-primary/70 dark:text-white/70 flex-wrap">
+                <span>{diamond.cut}</span>
+                <span class="text-muted-dark">·</span>
+                <span>{diamond.color}</span>
+                <span class="text-muted-dark">·</span>
+                <span>{diamond.clarity}</span>
+              </div>
+
+              <!-- CTAs -->
+              <div class="flex items-center gap-1.5 mt-1">
+                <a
+                  href={`/diamonds/${diamond.id}/`}
+                  class="btn btn-secondary !h-8 !min-w-0 !px-2.5 !text-[9px] w-full justify-center"
+                >
+                  View Details
+                </a>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- View All -->
+    <div class="text-center mt-12 reveal">
+      <a href="/diamonds/" class="btn btn-primary">
+        View All Diamonds
+      </a>
+    </div>
+  </div>
+</section>

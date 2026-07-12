@@ -1,0 +1,374 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import { siteConfig } from "../../data/config";
+import type { Diamond } from "../../data/config";
+import diamondsData from "../../data/diamonds.json";
+
+const diamonds = diamondsData as Diamond[];
+---
+
+<Layout
+  title="Loose Diamond Collection — Natural & Lab-Grown | Novva Diamonds"
+  description="Browse our curated collection of GIA & IGI certified loose diamonds. Filter by shape, carat, cut, color, clarity, and origin. Natural and Lab-Grown diamonds available."
+>
+  <PageHero
+    overline="Our Collection"
+    title="Loose Diamond Collection"
+    description="Every diamond is individually selected, graded, and certified. Find your perfect stone and get today's best price on WhatsApp."
+  />
+
+  <!-- Filters + Grid -->
+  <section class="section-padding bg-surface-warm" id="diamond-catalog">
+    <div class="container-luxe">
+      <!-- Filters Bar -->
+      <div class="mb-10 reveal relative z-50" id="filters-section">
+        <!-- Filter toggles -->
+        <div class="flex flex-wrap items-center gap-3 mb-6 relative z-50">
+          <span class="text-label-md text-on-surface mr-2">Filter:</span>
+
+          <!-- Shape Filter -->
+          <div class="relative" id="filter-shape-wrap">
+            <button
+              class="chip"
+              id="filter-shape-btn"
+              type="button"
+            >
+              Shape
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="filter-shape-dropdown" class="absolute top-full left-0 mt-2 bg-surface border border-muted rounded-md shadow-elevated p-4 min-w-[240px] opacity-0 invisible transition-all duration-200 z-40">
+              <div class="grid grid-cols-2 gap-2">
+                {siteConfig.shapes.map((shape) => (
+                  <label class="flex items-center gap-2 text-body-sm cursor-pointer hover:text-accent transition-colors py-1">
+                    <input type="checkbox" class="filter-checkbox shape-filter accent-primary w-4 h-4" value={shape} />
+                    {shape}
+                  </label>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <!-- Origin Filter -->
+          <div class="relative" id="filter-origin-wrap">
+            <button class="chip" id="filter-origin-btn" type="button">
+              Origin
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="filter-origin-dropdown" class="absolute top-full left-0 mt-2 bg-surface border border-muted rounded-md shadow-elevated p-4 min-w-[180px] opacity-0 invisible transition-all duration-200 z-40">
+              {siteConfig.origins.map((origin) => (
+                <label class="flex items-center gap-2 text-body-sm cursor-pointer hover:text-accent transition-colors py-1">
+                  <input type="checkbox" class="filter-checkbox origin-filter accent-primary w-4 h-4" value={origin} />
+                  {origin}
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <!-- Cut Filter -->
+          <div class="relative" id="filter-cut-wrap">
+            <button class="chip" id="filter-cut-btn" type="button">
+              Cut
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="filter-cut-dropdown" class="absolute top-full left-0 mt-2 bg-surface border border-muted rounded-md shadow-elevated p-4 min-w-[180px] opacity-0 invisible transition-all duration-200 z-40">
+              {siteConfig.cutGrades.map((cut) => (
+                <label class="flex items-center gap-2 text-body-sm cursor-pointer hover:text-accent transition-colors py-1">
+                  <input type="checkbox" class="filter-checkbox cut-filter accent-primary w-4 h-4" value={cut} />
+                  {cut}
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <!-- Color Filter -->
+          <div class="relative" id="filter-color-wrap">
+            <button class="chip" id="filter-color-btn" type="button">
+              Color
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="filter-color-dropdown" class="absolute top-full left-0 mt-2 bg-surface border border-muted rounded-md shadow-elevated p-4 min-w-[180px] opacity-0 invisible transition-all duration-200 z-40">
+              {siteConfig.colorGrades.map((color) => (
+                <label class="flex items-center gap-2 text-body-sm cursor-pointer hover:text-accent transition-colors py-1">
+                  <input type="checkbox" class="filter-checkbox color-filter accent-primary w-4 h-4" value={color} />
+                  {color}
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <!-- Clarity Filter -->
+          <div class="relative" id="filter-clarity-wrap">
+            <button class="chip" id="filter-clarity-btn" type="button">
+              Clarity
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="filter-clarity-dropdown" class="absolute top-full left-0 mt-2 bg-surface border border-muted rounded-md shadow-elevated p-4 min-w-[200px] opacity-0 invisible transition-all duration-200 z-40">
+              <div class="grid grid-cols-2 gap-2">
+                {siteConfig.clarityGrades.map((clarity) => (
+                  <label class="flex items-center gap-2 text-body-sm cursor-pointer hover:text-accent transition-colors py-1">
+                    <input type="checkbox" class="filter-checkbox clarity-filter accent-primary w-4 h-4" value={clarity} />
+                    {clarity}
+                  </label>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <!-- Certification Filter -->
+          <div class="relative" id="filter-cert-wrap">
+            <button class="chip" id="filter-cert-btn" type="button">
+              Certification
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="filter-cert-dropdown" class="absolute top-full left-0 mt-2 bg-surface border border-muted rounded-md shadow-elevated p-4 min-w-[160px] opacity-0 invisible transition-all duration-200 z-40">
+              {siteConfig.certifications.map((cert) => (
+                <label class="flex items-center gap-2 text-body-sm cursor-pointer hover:text-accent transition-colors py-1">
+                  <input type="checkbox" class="filter-checkbox cert-filter accent-primary w-4 h-4" value={cert} />
+                  {cert}
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <!-- Clear All -->
+          <button id="clear-filters" class="btn-link text-accent !text-[11px] ml-2 cursor-pointer hidden" type="button">
+            Clear All
+          </button>
+        </div>
+
+        <!-- Active filters display -->
+        <div id="active-filters" class="flex flex-wrap gap-2 mb-4"></div>
+
+        <!-- Results count -->
+        <p class="text-body-sm text-text-light">
+          Showing <span id="results-count" class="font-semibold text-on-surface">{diamonds.length}</span> diamonds
+        </p>
+      </div>
+
+      <!-- Diamond Grid -->
+      <div id="diamond-grid" class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+        {
+          diamonds.map((diamond) => (
+            <article
+              class="card group diamond-card"
+              data-shape={diamond.shape}
+              data-origin={diamond.origin}
+              data-cut={diamond.cut}
+              data-color={diamond.color}
+              data-clarity={diamond.clarity}
+              data-cert={diamond.certification}
+              data-carat={diamond.carat}
+              id={`diamond-${diamond.id}`}
+            >
+              <!-- Image -->
+              <a href={`/diamonds/${diamond.id}/`} class="block img-zoom mb-4 aspect-square bg-surface-marble rounded-sm overflow-hidden border border-muted hover:border-accent/30 transition-colors duration-300">
+                <div class="w-full h-full flex items-center justify-center relative bg-white">
+                  <img
+                    src={`/shape_Images/${diamond.shape.toLowerCase()}.jpeg`}
+                    alt={`${diamond.carat}ct ${diamond.shape} Diamond`}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div class="absolute top-2.5 left-2.5 flex gap-1 z-10">
+                    <span class="badge !text-[9px] !px-2 !py-0.5">{diamond.certification}</span>
+                    {diamond.origin === "Lab-Grown" && (
+                      <span class="badge-green badge !text-[9px] !px-2 !py-0.5">Lab</span>
+                    )}
+                  </div>
+                </div>
+              </a>
+
+              <!-- Details -->
+              <div class="px-1">
+                <a href={`/diamonds/${diamond.id}/`} class="block mb-2">
+                  <h3 class="text-body-md font-semibold text-on-surface mb-0.5 line-clamp-1">
+                    {diamond.carat}ct {diamond.shape}
+                  </h3>
+                </a>
+
+                <div class="flex items-center gap-1.5 mb-3 text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-primary/70 dark:text-white/70">
+                  <span>{diamond.cut}</span>
+                  <span class="text-muted-dark">·</span>
+                  <span>{diamond.color}</span>
+                  <span class="text-muted-dark">·</span>
+                  <span>{diamond.clarity}</span>
+                </div>
+
+                <a
+                  href={`/diamonds/${diamond.id}/`}
+                  class="btn btn-secondary !h-9 !min-w-0 w-full !px-2 !text-[10px] justify-center"
+                >
+                  View Details
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      <!-- No results message -->
+      <div id="no-results" class="hidden text-center py-16">
+        <svg class="w-16 h-16 mx-auto text-muted-dark mb-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M19 3H5L2 9l10 12L22 9l-3-6zM9.62 8l1.5-3h1.76l1.5 3H9.62z"/>
+        </svg>
+        <p class="text-headline-md text-on-surface mb-2">No diamonds match your filters</p>
+        <p class="text-body-md text-text-light mb-6">Try adjusting your filters or clear them to see all diamonds.</p>
+        <button id="clear-filters-empty" class="btn btn-primary cursor-pointer" type="button">Clear All Filters</button>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // ─── Client-side Diamond Filtering ───
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll<HTMLElement>(".diamond-card");
+    const resultsCount = document.getElementById("results-count");
+    const noResults = document.getElementById("no-results");
+    const grid = document.getElementById("diamond-grid");
+    const clearBtn = document.getElementById("clear-filters");
+    const clearBtnEmpty = document.getElementById("clear-filters-empty");
+    const activeFiltersEl = document.getElementById("active-filters");
+
+    // Filter dropdown toggles
+    const filterBtns = ["shape", "origin", "cut", "color", "clarity", "cert"];
+    filterBtns.forEach((name) => {
+      const btn = document.getElementById(`filter-${name}-btn`);
+      const dropdown = document.getElementById(`filter-${name}-dropdown`);
+      btn?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        // Close other dropdowns
+        filterBtns.forEach((other) => {
+          if (other !== name) {
+            document.getElementById(`filter-${other}-dropdown`)?.classList.add("opacity-0", "invisible");
+          }
+        });
+        dropdown?.classList.toggle("opacity-0");
+        dropdown?.classList.toggle("invisible");
+      });
+    });
+
+    // Close dropdowns on outside click
+    document.addEventListener("click", () => {
+      filterBtns.forEach((name) => {
+        document.getElementById(`filter-${name}-dropdown`)?.classList.add("opacity-0", "invisible");
+      });
+    });
+
+    // Prevent dropdown close on click inside
+    document.querySelectorAll("[id$='-dropdown']").forEach((d) => {
+      d.addEventListener("click", (e) => e.stopPropagation());
+    });
+    
+    // Also prevent label and input clicks from bubbling to document in weird ways
+    document.querySelectorAll(".filter-checkbox").forEach((cb) => {
+      cb.addEventListener("click", (e) => e.stopPropagation());
+    });
+
+    // Apply URL params as initial filters
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialShape = urlParams.get("shape");
+    const initialOrigin = urlParams.get("origin");
+    if (initialShape) {
+      document.querySelectorAll<HTMLInputElement>(".shape-filter").forEach((cb) => {
+        if (cb.value === initialShape) cb.checked = true;
+      });
+    }
+    if (initialOrigin) {
+      document.querySelectorAll<HTMLInputElement>(".origin-filter").forEach((cb) => {
+        if (cb.value === initialOrigin) cb.checked = true;
+      });
+    }
+
+    function getCheckedValues(selector: string): string[] {
+      return Array.from(document.querySelectorAll<HTMLInputElement>(selector))
+        .filter((cb) => cb.checked)
+        .map((cb) => cb.value);
+    }
+
+    function applyFilters() {
+      const shapes = getCheckedValues(".shape-filter");
+      const origins = getCheckedValues(".origin-filter");
+      const cuts = getCheckedValues(".cut-filter");
+      const colors = getCheckedValues(".color-filter");
+      const clarities = getCheckedValues(".clarity-filter");
+      const certs = getCheckedValues(".cert-filter");
+
+      const hasFilters = [shapes, origins, cuts, colors, clarities, certs].some((f) => f.length > 0);
+      clearBtn?.classList.toggle("hidden", !hasFilters);
+
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const matchShape = shapes.length === 0 || shapes.includes(card.dataset.shape || "");
+        const matchOrigin = origins.length === 0 || origins.includes(card.dataset.origin || "");
+        const matchCut = cuts.length === 0 || cuts.includes(card.dataset.cut || "");
+        const matchColor = colors.length === 0 || colors.includes(card.dataset.color || "");
+        const matchClarity = clarities.length === 0 || clarities.includes(card.dataset.clarity || "");
+        const matchCert = certs.length === 0 || certs.includes(card.dataset.cert || "");
+
+        const visible = matchShape && matchOrigin && matchCut && matchColor && matchClarity && matchCert;
+        card.style.display = visible ? "" : "none";
+        if (visible) visibleCount++;
+      });
+
+      if (resultsCount) resultsCount.textContent = String(visibleCount);
+      noResults?.classList.toggle("hidden", visibleCount > 0);
+      grid?.classList.toggle("hidden", visibleCount === 0);
+
+      // Update active filters display
+      if (activeFiltersEl) {
+        const all = [...shapes, ...origins, ...cuts, ...colors, ...clarities, ...certs];
+        activeFiltersEl.innerHTML = all
+          .map(
+            (f) =>
+              `<span class="inline-flex items-center gap-1 px-3 py-1 bg-primary/10 text-primary text-caption rounded-full">
+                ${f}
+                <button class="remove-filter cursor-pointer ml-1 hover:text-error transition-colors" data-value="${f}" type="button">×</button>
+              </span>`
+          )
+          .join("");
+
+        // Attach remove handlers
+        activeFiltersEl.querySelectorAll(".remove-filter").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const val = (btn as HTMLElement).dataset.value;
+            document.querySelectorAll<HTMLInputElement>(".filter-checkbox").forEach((cb) => {
+              if (cb.value === val) cb.checked = false;
+            });
+            applyFilters();
+          });
+        });
+      }
+    }
+
+    // Listen for filter changes
+    document.querySelectorAll(".filter-checkbox").forEach((cb) => {
+      cb.addEventListener("change", applyFilters);
+    });
+
+    // Clear all
+    function clearAll() {
+      document.querySelectorAll<HTMLInputElement>(".filter-checkbox").forEach((cb) => (cb.checked = false));
+      applyFilters();
+    }
+    clearBtn?.addEventListener("click", clearAll);
+    clearBtnEmpty?.addEventListener("click", clearAll);
+
+    // Apply initial filters
+    applyFilters();
+  });
+</script>

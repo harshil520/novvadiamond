@@ -1,11 +1,23 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import HeroSection from "../components/home/HeroSection.astro";
+import TrustBar from "../components/home/TrustBar.astro";
+import FeaturedDiamonds from "../components/home/FeaturedDiamonds.astro";
+import WhyNovva from "../components/home/WhyNovva.astro";
+import ShapesShowcase from "../components/home/ShapesShowcase.astro";
+import TestimonialsSection from "../components/home/TestimonialsSection.astro";
+import CTABanner from "../components/home/CTABanner.astro";
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="Novva Diamonds — Certified Loose Diamonds | Natural & Lab-Grown | Surat, India"
+  description="Premium GIA & IGI certified loose diamonds — Natural and Lab-Grown — sourced directly from Surat, India. Serving buyers in USA, Australia, Canada, Europe, and Kazakhstan."
+>
+  <HeroSection />
+  <TrustBar />
+  <FeaturedDiamonds />
+  <WhyNovva />
+  <ShapesShowcase />
+  <TestimonialsSection />
+  <CTABanner />
 </Layout>

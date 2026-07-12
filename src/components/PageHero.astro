@@ -1,0 +1,23 @@
+---
+interface Props {
+  overline: string;
+  title: string;
+  description: string;
+  size?: "default" | "large";
+}
+
+const { overline, title, description, size = "default" } = Astro.props;
+---
+
+<section class:list={["page-hero", size === "large" ? "py-16 lg:py-24" : "py-16 lg:py-20"]}>
+  <div class="container-luxe text-center">
+    <span class="overline block mb-4">{overline}</span>
+    <h1 class="text-headline-lg text-on-surface mb-4" style="font-size: clamp(28px, 4vw, 44px);">
+      {title}
+    </h1>
+    <hr class="divider-gold mx-auto mb-6" />
+    <p class="text-body-lg text-text-light max-w-2xl mx-auto">
+      {description}
+    </p>
+  </div>
+</section>
