@@ -181,10 +181,10 @@ const specs = [
           <h2 class="text-headline-md">Similar Diamonds</h2>
         </div>
 
-        <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto">
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-5 max-w-4xl mx-auto">
           {similarDiamonds.map((d, i) => (
-            <article class={`card group reveal stagger-${i + 1}`}>
-              <a href={`/diamonds/${d.id}/`} class="block img-zoom mb-4 aspect-square bg-surface-marble rounded-sm overflow-hidden border border-muted hover:border-accent/30 transition-colors duration-300">
+            <article class={`card group reveal stagger-${i + 1} !p-0 overflow-hidden`}>
+              <a href={`/diamonds/${d.id}/`} class="block img-zoom aspect-square bg-surface-marble overflow-hidden border-b border-muted hover:border-accent/30 transition-colors duration-300">
                 <div class="w-full h-full flex items-center justify-center bg-white">
                   <img
                     src={`/shape_Images/${d.shape.toLowerCase()}.jpeg`}
@@ -194,20 +194,13 @@ const specs = [
                   />
                 </div>
               </a>
-              <div class="px-1">
-                <a href={`/diamonds/${d.id}/`}>
-                  <h3 class="text-body-md font-semibold text-on-surface mb-1">{d.carat}ct {d.shape}</h3>
+              <div class="p-2.5 sm:p-3">
+                <a href={`/diamonds/${d.id}/`} class="block mb-2">
+                  <h3 class="text-sm sm:text-body-md font-semibold text-on-surface mb-0.5">{d.carat}ct {d.shape}</h3>
                 </a>
-                <div class="flex items-center gap-2 mb-3 text-[11px] font-bold tracking-wider uppercase text-primary/70 dark:text-white/70">
-                  <span>{d.cut}</span>
-                  <span class="text-muted-dark">·</span>
-                  <span>{d.color}</span>
-                  <span class="text-muted-dark">·</span>
-                  <span>{d.clarity}</span>
-                </div>
                 <a
                   href={`/diamonds/${d.id}/`}
-                  class="btn btn-secondary !h-9 !min-w-0 w-full !px-3 !text-[10px] justify-center"
+                  class="btn btn-secondary !h-8 sm:!h-9 !min-w-0 w-full !px-2 !text-[9px] sm:!text-[10px] justify-center"
                 >
                   View Details
                 </a>

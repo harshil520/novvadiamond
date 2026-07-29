@@ -21,12 +21,12 @@ const featuredDiamonds = (diamondsData as Diamond[]).filter((d) => d.featured).s
     </div>
 
     <!-- Diamond Grid -->
-    <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
       {
         featuredDiamonds.map((diamond, i) => (
-          <article class={`card group reveal stagger-${i + 1}`} id={`featured-${diamond.id}`}>
+          <article class={`card group reveal stagger-${i + 1} !p-0 overflow-hidden`} id={`featured-${diamond.id}`}>
             <!-- Image -->
-            <a href={`/diamonds/${diamond.id}/`} class="block img-zoom mb-4 aspect-square bg-surface-marble rounded-sm overflow-hidden border border-muted hover:border-accent/30 transition-colors duration-300">
+            <a href={`/diamonds/${diamond.id}/`} class="block img-zoom aspect-square bg-surface-marble overflow-hidden border-b border-muted hover:border-accent/30 transition-colors duration-300">
               <div class="w-full h-full flex items-center justify-center relative bg-white">
                 <img
                   src={`/shape_Images/${diamond.shape.toLowerCase()}.jpeg`}
@@ -35,7 +35,7 @@ const featuredDiamonds = (diamondsData as Diamond[]).filter((d) => d.featured).s
                   loading="lazy"
                 />
                 <!-- Badges -->
-                <div class="absolute top-2.5 left-2.5 flex gap-1 z-10">
+                <div class="absolute top-2 left-2 flex gap-1 z-10">
                   <span class="badge !text-[9px] !px-2 !py-0.5">{diamond.certification}</span>
                   {diamond.origin === "Lab-Grown" && (
                     <span class="badge-green badge !text-[9px] !px-2 !py-0.5">Lab</span>
@@ -45,27 +45,18 @@ const featuredDiamonds = (diamondsData as Diamond[]).filter((d) => d.featured).s
             </a>
 
             <!-- Details -->
-            <div class="px-1">
+            <div class="p-2.5 sm:p-3">
               <a href={`/diamonds/${diamond.id}/`} class="block mb-2">
-                <h3 class="text-body-md font-semibold text-on-surface mb-0.5 line-clamp-1">
+                <h3 class="text-sm sm:text-body-md font-semibold text-on-surface mb-0.5 line-clamp-1">
                   {diamond.carat}ct {diamond.shape}
                 </h3>
               </a>
-
-              <!-- Specs Row -->
-              <div class="flex items-center gap-1.5 mb-3 text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-primary/70 dark:text-white/70 flex-wrap">
-                <span>{diamond.cut}</span>
-                <span class="text-muted-dark">·</span>
-                <span>{diamond.color}</span>
-                <span class="text-muted-dark">·</span>
-                <span>{diamond.clarity}</span>
-              </div>
 
               <!-- CTAs -->
               <div class="flex items-center gap-1.5 mt-1">
                 <a
                   href={`/diamonds/${diamond.id}/`}
-                  class="btn btn-secondary !h-8 !min-w-0 !px-2.5 !text-[9px] w-full justify-center"
+                  class="btn btn-secondary !h-8 !min-w-0 !px-2 !text-[9px] w-full justify-center"
                 >
                   View Details
                 </a>

@@ -159,11 +159,11 @@ const diamonds = diamondsData as Diamond[];
       </div>
 
       <!-- Diamond Grid -->
-      <div id="diamond-grid" class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+      <div id="diamond-grid" class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 lg:gap-5">
         {
           diamonds.map((diamond) => (
             <article
-              class="card group diamond-card"
+              class="card group diamond-card !p-0 overflow-hidden"
               data-shape={diamond.shape}
               data-origin={diamond.origin}
               data-cut={diamond.cut}
@@ -174,7 +174,7 @@ const diamonds = diamondsData as Diamond[];
               id={`diamond-${diamond.id}`}
             >
               <!-- Image -->
-              <a href={`/diamonds/${diamond.id}/`} class="block img-zoom mb-4 aspect-square bg-surface-marble rounded-sm overflow-hidden border border-muted hover:border-accent/30 transition-colors duration-300">
+              <a href={`/diamonds/${diamond.id}/`} class="block img-zoom aspect-square bg-surface-marble overflow-hidden border-b border-muted hover:border-accent/30 transition-colors duration-300">
                 <div class="w-full h-full flex items-center justify-center relative bg-white">
                   <img
                     src={`/shape_Images/${diamond.shape.toLowerCase()}.jpeg`}
@@ -182,7 +182,7 @@ const diamonds = diamondsData as Diamond[];
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
-                  <div class="absolute top-2.5 left-2.5 flex gap-1 z-10">
+                  <div class="absolute top-2 left-2 flex gap-1 z-10">
                     <span class="badge !text-[9px] !px-2 !py-0.5">{diamond.certification}</span>
                     {diamond.origin === "Lab-Grown" && (
                       <span class="badge-green badge !text-[9px] !px-2 !py-0.5">Lab</span>
@@ -192,24 +192,16 @@ const diamonds = diamondsData as Diamond[];
               </a>
 
               <!-- Details -->
-              <div class="px-1">
+              <div class="p-2.5 sm:p-3">
                 <a href={`/diamonds/${diamond.id}/`} class="block mb-2">
-                  <h3 class="text-body-md font-semibold text-on-surface mb-0.5 line-clamp-1">
+                  <h3 class="text-sm sm:text-body-md font-semibold text-on-surface mb-0.5 line-clamp-1">
                     {diamond.carat}ct {diamond.shape}
                   </h3>
                 </a>
 
-                <div class="flex items-center gap-1.5 mb-3 text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-primary/70 dark:text-white/70">
-                  <span>{diamond.cut}</span>
-                  <span class="text-muted-dark">·</span>
-                  <span>{diamond.color}</span>
-                  <span class="text-muted-dark">·</span>
-                  <span>{diamond.clarity}</span>
-                </div>
-
                 <a
                   href={`/diamonds/${diamond.id}/`}
-                  class="btn btn-secondary !h-9 !min-w-0 w-full !px-2 !text-[10px] justify-center"
+                  class="btn btn-secondary !h-8 sm:!h-9 !min-w-0 w-full !px-2 !text-[9px] sm:!text-[10px] justify-center"
                 >
                   View Details
                 </a>
